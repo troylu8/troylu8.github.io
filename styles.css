@@ -7,6 +7,10 @@
     --slate-color: #26282A;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 body {
     background-color: var(--slate-color); 
     color: var(--oat-color);
@@ -15,6 +19,19 @@ body {
     flex-direction: column;
 
     margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--slate-color);
+}
+::-webkit-scrollbar-thumb {
+    background: #dfc88a94;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #dfc88ac7; 
 }
 
 #hey {

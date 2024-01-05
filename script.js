@@ -6,7 +6,7 @@ let activeSectionID = null;
 let activeSection = null;
 let activeSectionLink = null;
 
-function setActive(id) {
+function setActiveSection(id) {
     if (activeSectionID === id) return;
     activeSectionID = id;
 
@@ -24,6 +24,18 @@ let activeDevlogID = null;
 let activeDevlog = null;
 
 const allDropdownLinks = document.getElementsByClassName("dropdown-link");
+
+function setActiveDevlog(id, projectName) {
+    if (activeDevlogID === id) return;
+    activeDevlogID = id;
+
+    if (activeDevlog !== null) activeDevlog.style.display = "none";
+    activeDevlog = document.getElementById(activeDevlogID);
+    activeDevlog.style.display = "flex";
+
+    for (const d of allDropdownLinks) 
+        d.textContent = projectName;
+}
 
 for (const dropdownLink of allDropdownLinks) {
     const optionPanel = dropdownLink.parentNode.querySelector(".dropdown-panel");
@@ -45,23 +57,14 @@ for (const dropdownLink of allDropdownLinks) {
         option.addEventListener("click", () => {
             optionPanel.style.display = "none";
 
-            if (activeDevlogID === option.value) return;
-            activeDevlogID = option.value;
-
-            if (activeDevlog !== null) activeDevlog.style.display = "none";
-            activeDevlog = document.getElementById(activeDevlogID);
-            activeDevlog.style.display = "flex";
-
-            for (const d of allDropdownLinks) 
-                d.textContent = option.textContent;
-            
+            setActiveDevlog(option.value, option.textContent);
         })
     }
     
 }
 
 
-
-setActive("devlogs");
+setActiveSection("devlogs");
+setActiveDevlog("project1-devlog", "project1");
 
 document.getElementById("section-link-nav").style.backgroundColor = slateColor + "b0";
