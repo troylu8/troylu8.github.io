@@ -10,14 +10,17 @@ function setActiveSection(id) {
     if (activeSectionID === id) return;
     activeSectionID = id;
 
-    if (activeSection !== null) activeSection.style.display = "none";
+    if (activeSection !== null) {
+        activeSection.style.display = "none";
+        setChildrenTransparent(activeSection);
+    }
     activeSection = document.getElementById(id);
     activeSection.style.display = "flex";
+    fadeInChildren(activeSection);
 
     if (activeSectionLink !== null) activeSectionLink.classList.remove("section-link-active");
     activeSectionLink = document.getElementById(id + "-link");
     activeSectionLink.classList.add("section-link-active");
-    
 }
 
 let activeDevlogID = null;
@@ -63,6 +66,36 @@ for (const dropdownLink of allDropdownLinks) {
     
 }
 
+function fadeIn(elem) {
+    let op = 0.1;
+
+    const timer = setInterval(() => {
+
+        elem.style.opacity = op;
+
+        if (elem.style.opacity >= 1) {
+            elem.style.opacity = 1;
+            clearInterval(timer);
+        }
+
+        op += op * 0.1;
+        
+    }, 10);
+
+    return timer;
+}
+function fadeInStartingWith(elem) {
+    if (elem == undefined) return;
+    fadeIn(elem);
+    setTimeout(() => fadeInStartingWith(elem.nextElementSibling), 50);
+}
+function fadeInChildren(parentElem) {
+    fadeInStartingWith(parentElem.firstElementChild);
+}
+function setChildrenTransparent(parentElem) {
+    for (const child of parentElem.children) 
+        child.style.opacity = "0";
+}
 
 setActiveSection("devlogs");
 setActiveDevlog("project1-devlog", "project1");
