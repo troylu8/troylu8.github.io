@@ -1,1 +1,118 @@
-abc
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+
+        <nav id="section-link-nav">
+            <div class="section-link" onclick='setActive("home")'>
+                <div id="home-link" class="section-link-inactive"> home </div>
+                <div class="section-link-underline"></div>
+            </div>
+            <div class="section-link" onclick='setActive("projects")'>
+                <div id="projects-link" class="section-link-inactive"> projects </div>
+                <div class="section-link-underline"></div>
+            </div>
+            <div class="section-link" onclick='setActive("devlogs")'>
+                <div id="devlogs-link" class="section-link-inactive"> devlogs </div>
+                <div class="section-link-underline"></div>
+            </div>
+        </nav>
+
+        <div id="home" class="section">
+            <h1 id="hey"> hey </h1>
+
+            <p id="greeting"> greeting! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus quaerat reiciendis facere incidunt tempore! Nobis delectus totam, magni deserunt quisquam suscipit repellendus recusandae animi quo cum sed, blanditiis ducimus rerum? </p>
+            
+        </div>
+        
+        <div id="projects" class="section">
+
+            <h1> projects </h1>
+            
+            <div class="project-panel">
+                <div class="project-panel-info">
+                    <h2> project title </h2>
+                    <p> desc Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore aliquam officia sed earum, dolorem deleniti nesciunt molestias veniam et neque? Hic repellat praesentium, modi illo nisi ipsum nihil blanditiis sunt?</p>
+                    
+                    <div>
+                        <nav class="icon-link-nav">
+                            <div class="icon-link"> <img src="images/icons/github.png"> </div>
+                            <div class="icon-link"> <img src="images/icons/discord.jpg"> </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="project-panel-image">
+                    <img src="images/projects/under table cropped.jpg">
+                </div>
+            </div>
+            <div class="project-divider"> <div></div> </div>
+            <div class="project-panel">
+                <div class="project-panel-info">
+                    <h2> project title </h2>
+                    <p> desc Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore aliquam officia sed earum, dolorem deleniti nesciunt molestias veniam et neque? Hic repellat praesentium, modi illo nisi ipsum nihil blanditiis sunt?</p>
+                    
+                    <div>
+                        <nav class="icon-link-nav">
+                            <div class="icon-link"> <img src="images/icons/github.png"> </div>
+                            <div class="icon-link"> <img src="images/icons/discord.jpg"> </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="project-panel-image">
+                    <img src="images/projects/under table cropped.jpg">
+                </div>
+            </div>
+        </div>
+
+
+        <div id="devlogs" class="section">
+
+            <h1> 
+                <div class="dropdown" > 
+                    <div class="dropdown-link"> _ </div>
+                    <div class="dropdown-panel">
+                        <option value="project1-devlog"> project1 </option>
+                        <option value="project2-devlog"> project2 </option>
+                        <option value="project3-devlog"> project3 </option>
+                    </div>
+                </div>
+                devlog 
+            </h1>
+            <div> 
+                desc about 
+                <div class="dropdown" > 
+                    <div class="dropdown-link"> _ </div>
+                    <div class="dropdown-panel">
+                        <option value="project1-devlog"> project1 </option>
+                        <option value="project2-devlog"> project2 </option>
+                        <option value="project3-devlog"> project3 </option>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="project1-devlog" class="devlog">
+                project1-devlog
+            </div>
+            <div id="project2-devlog" class="devlog">
+                project2-devlog
+            </div>
+            <div id="project3-devlog" class="devlog">
+                project3-devlog
+            </div>
+        </div>
+
+        <div id="bottom-image-div">
+            <img src="images/against rainy glass.png" id="bottom-image">
+        </div>
+
+    </body>
+
+    <script src="script.js"></script>
+
+</html>
