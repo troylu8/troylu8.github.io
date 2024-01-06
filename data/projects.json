@@ -12,9 +12,9 @@
         ]
     },
     {
-        "name": "project1",
-        "desc": "description for project1", 
-        "date": " date of project1",
+        "name": "project2",
+        "desc": "description for project2", 
+        "date": " date of project2",
         "image-path": "images/projects/under table cropped.jpg",
         "link-icons": [
             "images/icons/github.png"

@@ -3,7 +3,8 @@
     id of link on top: activeSection-link
 
     project name: project1
-    devlog data for that project: data/devlogs/projects1.json 
+    devlog data: data/devlogs/projects1.json 
+    devlog element id: project1-devlog 
 */
 
 html, body {
@@ -149,13 +150,13 @@ body {
 
 .project-panel {
     border: solid lightcoral 2px;
-    margin: 10px 0px;
 
     display: flex;
 }
 .divider {
     display: flex;
     justify-content: center;
+    margin: 10px 0px;
 }
 .divider > div {
     background-color: var(--oat-color);
@@ -170,7 +171,7 @@ body {
     flex: 2;
 }
 
-.project-panel-info > h2 {
+h2 {
     margin: 0;
 }
 .project-panel-bottom {
@@ -183,7 +184,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.project-date {
+.date {
     margin: 0;
     color: lightgray;
 }
@@ -247,7 +248,12 @@ option::selection {
 
 .devlog {
     display: none;
-    
+}
+.devlogs-desc {
+    margin-bottom: 30px;
+}
+.devlog-panel {
+    border: solid lightcoral 2px;
 }
 
 #pics-grid {

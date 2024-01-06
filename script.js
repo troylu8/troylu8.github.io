@@ -34,36 +34,39 @@ function setActiveDevlog(id, projectName) {
 
     if (activeDevlog !== null) activeDevlog.style.display = "none";
     activeDevlog = document.getElementById(activeDevlogID);
-    activeDevlog.style.display = "flex";
+    activeDevlog.style.display = "block";
 
     for (const d of allDropdownLinks) 
         d.textContent = projectName;
 }
 
-for (const dropdownLink of allDropdownLinks) {
-    const optionPanel = dropdownLink.parentNode.querySelector(".dropdown-panel");
+function addDropdownEvents() {
+    for (const dropdownLink of allDropdownLinks) {
+        const optionPanel = dropdownLink.parentNode.querySelector(".dropdown-panel");
+        
+        dropdownLink.addEventListener("mouseover", () => {
+            optionPanel.style.display = "flex";
+        });
     
-    dropdownLink.addEventListener("mouseover", () => {
-        optionPanel.style.display = "flex";
-    });
-
-    dropdownLink.parentNode.addEventListener("mouseout", () => {
-        if (!optionPanel.matches(":hover")) 
-            optionPanel.style.display = "none";
-    })
-    optionPanel.addEventListener("mouseout", () => {
-        if (!dropdownLink.parentNode.matches(":hover"))
-            optionPanel.style.display = "none";
-    })
-
-    for (const option of optionPanel.getElementsByTagName("*")) {
-        option.addEventListener("click", () => {
-            optionPanel.style.display = "none";
-
-            setActiveDevlog(option.value, option.textContent);
+        dropdownLink.parentNode.addEventListener("mouseout", () => {
+            if (!optionPanel.matches(":hover")) 
+                optionPanel.style.display = "none";
         })
-    }
+        optionPanel.addEventListener("mouseout", () => {
+            if (!dropdownLink.parentNode.matches(":hover"))
+                optionPanel.style.display = "none";
+        })
+
+        console.log(optionPanel.getElementsByTagName("*").length);
+
+        for (const op of optionPanel.getElementsByTagName("*")) {
+            op.addEventListener("click", () => {
+                optionPanel.style.display = "none";
+                setActiveDevlog(op.value, op.textContent);
+            })
+        }
     
+    }
 }
 
 function fadeIn(elem) {
@@ -111,57 +114,96 @@ function newElement(tag, cls) {
     return res;
 }
 
+const projectSection = document.getElementById("projects");
+
+function addProjectPanel(proj) {
+    const panel = projectSection.appendChild(newElement("div", "project-panel"));
+    
+        const info = panel.appendChild(newElement("div", "project-panel-info"));
+            info
+                .appendChild(document.createElement("h2"))
+                .textContent = proj['name'];
+
+            info
+                .appendChild(document.createElement("p"))
+                .textContent = proj['desc'];
+
+            const divInBottom = info
+                .appendChild(newElement("div", "project-panel-bottom"))
+                .appendChild(document.createElement("div"));
+            
+                const iconLinks = divInBottom.appendChild(newElement("nav", "icon-link-nav"));
+                for (const i in proj['links']) {
+                    const iconLink = iconLinks.appendChild(newElement("div", "icon-link"));
+                    iconLink.addEventListener("click", () => {
+                        open(proj['links'][i], "_blank");
+                    })
+
+                    iconLink
+                        .appendChild(document.createElement("img"))
+                        .src = proj['link-icons'][i];
+
+                }
+        
+                divInBottom
+                    .appendChild(newElement("p", "date"))
+                    .textContent = proj['date'];
+
+
+        panel
+            .appendChild(newElement("div", "project-panel-image"))
+            .appendChild(document.createElement("img"))
+            .src = proj['image-path'];
+
+    projectSection
+        .appendChild(newElement("div", "divider"))
+        .appendChild(document.createElement("div"));
+}
+
+
 fetchJSON("data/projects.json", (projects) => {
 
-    const sect = document.getElementById("projects");
 
     for (const proj of projects) {
-        console.log(proj);
-        const panel = sect.appendChild(newElement("div", "project-panel"));
-        
-            const info = panel.appendChild(newElement("div", "project-panel-info"));
-                info
-                    .appendChild(document.createElement("h2"))
-                    .textContent = proj['name'];
+        addProjectPanel(proj);
 
-                info
-                    .appendChild(document.createElement("p"))
-                    .textContent = proj['desc'];
-
-                const divInBottom = info
-                    .appendChild(newElement("div", "project-panel-bottom"))
-                    .appendChild(document.createElement("div"));
-                
-                    const iconLinks = divInBottom.appendChild(newElement("nav", "icon-link-nav"));
-                    for (const i in proj['links']) {
-                        const iconLink = iconLinks.appendChild(newElement("div", "icon-link"));
-                        iconLink.addEventListener("click", () => {
-                            open(proj['links'][i], "_blank");
-                        })
-
-                        iconLink
-                            .appendChild(document.createElement("img"))
-                            .src = proj['link-icons'][i];
-
-                    }
+        for (const panel of document.getElementsByClassName("dropdown-panel")) {
             
-                    divInBottom
-                        .appendChild(newElement("p", "project-date"))
-                        .textContent = proj['date'];
+            const option = panel.appendChild(document.createElement("option"));
+            option.value = `${proj['name']}-devlog`;
+            option.textContent = proj['name'];
+        }
 
+        const devlogSection = document.getElementById("devlogs");
 
-            panel
-                .appendChild(newElement("div", "project-panel-image"))
-                .appendChild(document.createElement("img"))
-                .src = proj['image-path'];
+        fetchJSON(`data/devlogs/${proj['name']}.json`, (devlogs) => {
+            
+            
+            const devlogListing = devlogSection
+                                    .appendChild(newElement("div", "devlog"))
+                                    .id = `${proj['name']}-devlog`
 
-        sect
-            .appendChild(newElement("div", "divider"))
-            .appendChild(document.createElement("div"));
+            for (const log of devlogs) {
+                const panel = devlogListing.appendChild(newElement("div", "devlog-panel"));
+                
+                panel
+                    .appendChild(document.createElement("h2"))
+                    .textContent = log['title'];
+                
+                panel
+                    .appendChild(document.createElement("p"))
+                    .innerHTML = log['body'];
+                
+                panel
+                    .appendChild(document.createElement("p"))
+                    .textContent = log['date'];
+            }
+        });
     }
 
-    sect.removeChild(sect.lastChild); // remove final divider
-});
+    projectSection.removeChild(projectSection.lastChild); // remove final divider
 
-setActiveSection("projects");
-setActiveDevlog("project1-devlog", "project1");
+    addDropdownEvents();
+    setActiveSection("devlogs");
+    setActiveDevlog("project1-devlog", "project1");
+});
