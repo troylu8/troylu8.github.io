@@ -1,13 +1,12 @@
 
-function getJSON(filepath, cb) {
-    fetch(filepath)
-        .then(res => res.json())
-        .then(data => {
-            cb(data);
-        })
+function func(one) {
+    console.log("one " + one);
+}
+function func(list) {
+    console.log(typeof list);
+    for (const item of list) {
+        console.log(item);
+    }
 }
 
-getJSON("test.json", (data) => {
-    console.log("aaa");
-    console.log(data);
-})
+func("a");

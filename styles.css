@@ -67,6 +67,7 @@ body {
     justify-content: center;
 
     outline: solid lightcoral 2px;
+    background-color: #26282Ab0;
 }
 
 #bottom-image {
@@ -94,9 +95,11 @@ body {
     margin-bottom: 0px;
     transition: 0.2s;
 }
+.icon-link:hover {
+    cursor: pointer;
+}
 
 .icon-link:hover > img {
-    cursor: pointer;
     margin-top: 0px;
     margin-bottom: 8px;
 }
@@ -170,10 +173,19 @@ body {
 .project-panel-info > h2 {
     margin: 0;
 }
-.project-panel-info > div {
+.project-panel-bottom {
     display: flex;
     flex-direction: column-reverse;
     height: 100%;
+}
+.project-panel-bottom > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.project-date {
+    margin: 0;
+    color: lightgray;
 }
 
 .project-panel-image {

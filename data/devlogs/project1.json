@@ -1,10 +1,9 @@
-{
-    "devlogs": [
-        {
-            "title": "project1 devlog",
-            "body": "body for this entry", 
-            "date": " date of this entry",
-            "image-path": "images/projects/under table cropped.jpg"
-        }
-    ]
-}
+[
+    {
+        "title": "project1 devlog",
+        "body": "body for this entry", 
+        "date": " date of this entry",
+        "image-path": "images/projects/under table cropped.jpg"
+    }
+]
+
