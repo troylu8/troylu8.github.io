@@ -1,0 +1,16 @@
+{
+    "projects": [
+        {
+            "name": "project1",
+            "desc": "description for project1", 
+            "date": " date of project1",
+            "image-path": "images/projects/under table cropped.jpg",
+            "link-icons": [
+                "images-icons-github.png"
+            ],
+            "links": [
+                "https://github.com/"
+            ]
+        }
+    ]
+}

@@ -1,3 +1,11 @@
+/* 
+    id of section: activeSection
+    id of link on top: activeSection-link
+
+    project name: project1
+    devlog data for that project: data/devlogs/projects1.json 
+*/
+
 html, body {
     height: 100%;
 }
@@ -132,6 +140,9 @@ body {
 
     padding-top: 40px;
 }
+.section > * {
+    opacity: 0;
+}
 
 .project-panel {
     border: solid lightcoral 2px;
@@ -139,11 +150,11 @@ body {
 
     display: flex;
 }
-.project-divider {
+.divider {
     display: flex;
     justify-content: center;
 }
-.project-divider > div {
+.divider > div {
     background-color: var(--oat-color);
     width: 60%;
     height: 2px;
@@ -225,4 +236,13 @@ option::selection {
 .devlog {
     display: none;
     
+}
+
+#pics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.pic {
+    width: 100%;
 }
