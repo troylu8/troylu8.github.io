@@ -22,6 +22,18 @@
         "links": [
             "https://github.com/"
         ]
+    },
+    {
+        "name": "project3",
+        "desc": "description for project3", 
+        "date": " date of project3",
+        "image-path": "images/projects/under table cropped.jpg",
+        "link-icons": [
+            "images/icons/github.png"
+        ],
+        "links": [
+            "https://github.com/"
+        ]
     }
 ]
 

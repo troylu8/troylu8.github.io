@@ -163,6 +163,9 @@ body {
     width: 60%;
     height: 2px;
 }
+.divider:last-child {
+    display: none;
+}
 
 .project-panel-info {
     display: flex;
@@ -245,15 +248,22 @@ option::-moz-selection {
 option::selection {
     background-color: transparent;
 }
-
-.devlog {
-    display: none;
-}
 .devlogs-desc {
     margin-bottom: 30px;
 }
-.devlog-panel {
+
+.devlog-listing {
+    display: none;
+}
+.devlog-listing:last-child {
+    display: none;
+}
+.devlog-entry {
     border: solid lightcoral 2px;
+}
+.devlog-doesnt-exist {
+    color: lightcoral;
+    
 }
 
 #pics-grid {

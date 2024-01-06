@@ -3,5 +3,15 @@
         "title": "project1 devlog",
         "body": "body for this entry", 
         "date": " date of this entry"
+    },
+    {
+        "title": "hello my second devlog!!!!",
+        "body": "body  with <span style='color: red'> red </span> text", 
+        "date": " date of this entry"
+    },
+    {
+        "title": "third devlog!!!???!",
+        "body": "body with img after <img src='images/pics/under table.jpg' style='width:150px; display: block;'> ", 
+        "date": " date of this entry"
     }
 ]

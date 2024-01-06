@@ -28,9 +28,10 @@ let activeDevlog = null;
 
 const allDropdownLinks = document.getElementsByClassName("dropdown-link");
 
-function setActiveDevlog(id, projectName) {
-    if (activeDevlogID === id) return;
-    activeDevlogID = id;
+function setActiveDevlog(projectName) {
+    if (activeDevlogID === `${projectName}-devlog-listing`) return;
+    console.log(`${projectName}-devlog-listing`);
+    activeDevlogID = `${projectName}-devlog-listing`;
 
     if (activeDevlog !== null) activeDevlog.style.display = "none";
     activeDevlog = document.getElementById(activeDevlogID);
@@ -62,7 +63,7 @@ function addDropdownEvents() {
         for (const op of optionPanel.getElementsByTagName("*")) {
             op.addEventListener("click", () => {
                 optionPanel.style.display = "none";
-                setActiveDevlog(op.value, op.textContent);
+                setActiveDevlog(op.textContent);
             })
         }
     
@@ -101,7 +102,12 @@ function setChildrenTransparent(parentElem) {
 }
 
 function fetchJSON(filepath, cb) {
-    fetch(filepath)
+    return fetch(filepath)
+        .then(res => {
+            if (!res.ok)
+                throw new Error("response unsuccessful", {cause: res});
+            return res;
+        })
         .then(res => res.json())
         .then(data => {
             cb(data);
@@ -174,36 +180,42 @@ fetchJSON("data/projects.json", (projects) => {
             option.textContent = proj['name'];
         }
 
-        const devlogSection = document.getElementById("devlogs");
+        const devlogListing = document
+                                .getElementById("devlogs")
+                                .appendChild(newElement("div", "devlog-listing"))
+        devlogListing.id = `${proj['name']}-devlog-listing`;
 
         fetchJSON(`data/devlogs/${proj['name']}.json`, (devlogs) => {
-            
-            
-            const devlogListing = devlogSection
-                                    .appendChild(newElement("div", "devlog"))
-                                    .id = `${proj['name']}-devlog`
 
             for (const log of devlogs) {
-                const panel = devlogListing.appendChild(newElement("div", "devlog-panel"));
+                const entry = devlogListing.appendChild(newElement("div", "devlog-entry"));
                 
-                panel
+                entry
                     .appendChild(document.createElement("h2"))
                     .textContent = log['title'];
                 
-                panel
+                entry
                     .appendChild(document.createElement("p"))
                     .innerHTML = log['body'];
                 
-                panel
-                    .appendChild(document.createElement("p"))
+                entry
+                    .appendChild(newElement("p", "date"))
                     .textContent = log['date'];
+
+                devlogListing
+                    .appendChild(newElement("div", "divider"))
+                    .appendChild(document.createElement("div"));
             }
-        });
+
+
+        }).then(() => {
+            addDropdownEvents();
+            setActiveSection("devlogs");
+            setActiveDevlog("project1");
+        }).catch((reason) => {
+            const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"))
+            doesntExistMsg.textContent = "no devlog";
+        })
     }
 
-    projectSection.removeChild(projectSection.lastChild); // remove final divider
-
-    addDropdownEvents();
-    setActiveSection("devlogs");
-    setActiveDevlog("project1-devlog", "project1");
 });
