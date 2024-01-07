@@ -21,6 +21,8 @@ function setActiveSection(id) {
     if (activeSectionLink !== null) activeSectionLink.classList.remove("section-link-active");
     activeSectionLink = document.getElementById(id + "-link");
     activeSectionLink.classList.add("section-link-active");
+
+    window.scrollTo(0, 0);
 }
 
 let activeDevlogID = null;
@@ -60,8 +62,7 @@ function addDropdownEvents() {
         for (const op of optionPanel.getElementsByTagName("*")) {
             op.addEventListener("click", () => {
                 optionPanel.style.display = "none";
-                setActiveDevlog(op.textContent);
-                window.scrollTo(0, 0);
+                setActiveDevlog(op.textContent);                
             })
         }
     
@@ -130,6 +131,10 @@ function newElement(tag, cls) {
     return res;
 }
 
+function openTab(link) {
+    open(link, "_blank");
+}
+
 const projectSection = document.getElementById("projects");
 
 function addProjectPanel(proj) {
@@ -152,7 +157,7 @@ function addProjectPanel(proj) {
                 for (const i in proj['links']) {
                     const iconLink = iconLinks.appendChild(newElement("div", "icon-link"));
                     iconLink.addEventListener("click", () => {
-                        open(proj['links'][i], "_blank");
+                        openTab(proj['links'][i]);
                     })
 
                     iconLink
@@ -317,6 +322,3 @@ picsModal.addEventListener("click", (e) => {
         picsModal.style.display = "none";
 })
 
-// document.getElementById("red-text").addEventListener("mouseover", () => {
-
-// })

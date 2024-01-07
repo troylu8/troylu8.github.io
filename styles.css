@@ -67,7 +67,6 @@ body {
     display: flex;
     justify-content: center;
 
-    outline: solid lightcoral 2px;
     background-color: #26282Ab0;
 
     z-index: 10;
@@ -115,12 +114,8 @@ body {
 }
 
 .icon-link-nav {
-    border: solid aliceblue 1px;
     display: flex;
-}
-
-.icon-link {
-    border: solid 1px lightcoral;
+    gap: 10px;
 }
 
 .icon-link > img {
@@ -133,6 +128,10 @@ body {
     margin-top: 8px;
     margin-bottom: 0px;
     transition: 0.2s;
+}
+#contact-nav img {
+    width: 50px;
+    height: 50px;
 }
 .icon-link:hover {
     cursor: pointer;
@@ -155,14 +154,12 @@ body {
 }
 
 .project-panel {
-    border: solid lightcoral 2px;
-
     display: flex;
 }
 .divider {
     display: flex;
     justify-content: center;
-    margin: 10px 0px;
+    margin: 60px 0px;
 }
 .divider > div {
     background-color: var(--oat-color);
@@ -181,6 +178,7 @@ body {
 }
 
 h2 {
+    color: lightblue;
     margin: 0;
 }
 .project-panel-bottom {
@@ -195,7 +193,7 @@ h2 {
 }
 .date {
     margin: 0;
-    color: lightgray;
+    color: lightgreen;
 }
 
 .project-panel-image {
@@ -203,7 +201,6 @@ h2 {
     align-items: center;
 
     flex: 1;
-    border: solid 2px lightblue;
 
     margin-left: 10px;
 }
@@ -285,9 +282,6 @@ option:hover {
 }
 .devlog-listing:last-child {
     display: none;
-}
-.devlog-entry {
-    border: solid lightcoral 2px;
 }
 .devlog-doesnt-exist {
     color: lightblue;
