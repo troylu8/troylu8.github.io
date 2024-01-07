@@ -1,66 +1,8 @@
-<html>
-
-    <head>
-        <style>
-            .section {
-                display: flex;
-                flex-direction: column;
-                margin: 10px;
-
-                padding-top: 40px;
-            }
-
-            #red-text-tooltip {
-                position: absolute;
-                background-color: var(--slate-color);
-
-                left: 0px;
-                top: 100%;
-
-                border: solid 2px;
-
-                visibility: hidden;
-            }
-
-            #red-text {
-                color: lightcoral;
-                display: inline-block;
-                position: relative;
-            }
-
-            #red-text:hover > #red-text-tooltip {
-                visibility: visible;
-            }
-
-            #red-p {
-                display: inline;
-            }
-            
-        </style>
-    </head>
-
-    <body>
-        <div class="section">
-            <div>
-                <p id="red-p"> 
-                    hover over the 
-                    <div id="red-text"> 
-                        red 
-                        <div id="red-text-tooltip"> not&nbsp;this&nbsp;one&nbsp;dummy </div>
-                    </div> 
-                    text to check out a different project 
-                </p>
-            </div>
-                
-        </div>
-
-
-    </body>
-
-    <script>
-
-
-        
-
-    </script>
-</html>
+<!DOCTYPE html>
+<html><head><title>No Underline! You're welcome.</title>
+<style type="text/css">
+  li span.emphasis { text-decoration:underline; }
+</style>
+</head><body>
+  <ol><li>RULE <span class="emphasis">CONTENT</span></li></ol>
+</body></html>

@@ -6,8 +6,6 @@ let activeSectionID = null;
 let activeSection = null;
 let activeSectionLink = null;
 
-const colors = ["lightcoral", "lightblue", "lightgreen"];
-
 function setActiveSection(id) {
     if (activeSectionID === id) return;
     activeSectionID = id;
@@ -15,6 +13,9 @@ function setActiveSection(id) {
     if (activeSection !== null) {
         activeSection.style.display = "none";
         setChildrenTransparent(activeSection);
+        for (const waiter of waiters)
+            clearTimeout(waiter);
+        waiters.clear();
     }
     activeSection = document.getElementById(id);
     activeSection.style.display = "flex";
@@ -26,7 +27,7 @@ function setActiveSection(id) {
     }
     activeSectionLink = document.getElementById(id + "-link");
     activeSectionLink.classList.add("section-link-active");
-    activeSectionLink.style.color = colors[Math.floor(Math.random() * colors.length)];
+    activeSectionLink.style.color = ["lightcoral", "lightblue", "lightgreen"][Math.floor(Math.random() * 3)];
 
     window.scrollTo(0, 0);
 }
@@ -75,12 +76,15 @@ function addDropdownEvents() {
     }
 }
 
+function logBaseN(n, val) {
+    return Math.log(val) / Math.log(n);
+}
 
-
-function fadeIn(elem) {
+// opacity = (start) * (pace)^(ms passed / delay)
+function fadeIn(elem, initialOpacity, rate, delay) {
     const parentID = elem.parentElement.id;
     
-    let op = 0.1;
+    let op = initialOpacity;
 
     const timer = setInterval(() => {
         const currOp = parseFloat(elem.style.opacity);
@@ -97,17 +101,36 @@ function fadeIn(elem) {
         }
         else {  
             elem.style.opacity = op;
-            op += op * 0.2;    
+            op *= rate;    
         }
         
-    }, 10);
+    }, delay);
 
     return timer;
 }
+
+const initialOpacity = 0.1;
+const rate = 1.2;
+const delay = 10
+
+const expectedFinishTime = delay * logBaseN(rate, 1 / initialOpacity);
+
+const waiters = new Set();
+
 function fadeInStartingWith(elem) {
     if (elem == undefined) return;
     elem.style.opacity = 0;
-    fadeIn(elem);
+
+    const timer = fadeIn(elem, initialOpacity, rate, delay);
+
+    // set opacity to 1 after some time
+    waiters.add( setTimeout(() => {
+        if (elem.style.opacity != "1") {
+            elem.style.opacity = "1";
+            clearInterval(timer);
+            console.log("took too long");
+        }
+    }, expectedFinishTime + 100) );
     setTimeout(() => fadeInStartingWith(elem.nextElementSibling), 50);
 }
 function fadeInChildren(parentElem) {
@@ -231,7 +254,7 @@ fetchJSON("data/projects.json", (projects) => {
 
         }).then(() => {
             addDropdownEvents();
-            setActiveSection("devlogs");
+            setActiveSection("home");
             setActiveDevlog("project1");
         }).catch((reason) => {
             const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"))
@@ -297,9 +320,9 @@ function stackPictures() {
 
                 if ((pic.naturalWidth / window.innerWidth) < (pic.naturalHeight / window.innerHeight)) {
                     enlargedPic.style.width = "auto";
-                    enlargedPic.style.height = (window.innerHeight - 200) + "px";
+                    enlargedPic.style.height = (window.innerHeight - 100) + "px";
                 } else {
-                    enlargedPic.style.width = (window.innerWidth - 200) + "px";
+                    enlargedPic.style.width = (window.innerWidth - 100) + "px";
                     enlargedPic.style.height = "auto";
                 }
             });
@@ -328,3 +351,44 @@ picsModal.addEventListener("click", (e) => {
         picsModal.style.display = "none";
 })
 
+const discordIconDiv = document.getElementById("discord-icon-div");
+const discordCopyMsg = document.getElementById("discord-copy-tooltip");
+discordIconDiv.addEventListener("click", () => {
+    navigator.clipboard.writeText("fiuu_")
+    discordCopyMsg.innerText = "copied!"
+})
+discordIconDiv.addEventListener("mouseout", (e) => {
+    if (!e.currentTarget.matches(":hover"))
+        discordCopyMsg.innerText = "fiuu_"
+})
+
+const email = document.getElementById("email");
+const emailCopied = document.getElementById("email-copied");
+
+let op;
+let emailTimer;
+
+email.addEventListener("click", () => {
+
+    emailCopied.style.visibility = "visible";
+    emailCopied.style.opacity = "1";
+    op = 1;
+
+    setTimeout(() => {
+
+        if (emailTimer != null) clearInterval(emailTimer);
+        emailTimer = setInterval(() => {
+
+            if (op > 0.01) {
+                op *= 0.95;
+                emailCopied.style.opacity = op;
+            } else {
+                clearInterval(emailTimer);
+                emailCopied.style.visibility = "hidden";
+            }
+        }, 10);
+
+    }, 2000);
+
+    console.log("clicked email");
+})
