@@ -213,7 +213,8 @@ h2 {
 
 
 .dropdown {
-    color: lightgray;
+    color: lightcoral;
+
     font-weight: bold;
     display: inline-block;
 
@@ -236,30 +237,51 @@ h2 {
     top: 100%;
 
     background-color: var(--slate-color);
-    outline: solid lightgrey 2px;
+    border: solid 2px;
     z-index: 1;
-}
-
-.dropdown-panel > *:hover {
-    background-color: lightgray;
 }
 
 .dropdown-panel:first-child {
     padding-top: 10px;
 }
 
-option::-moz-selection {
-    background-color: transparent;
+option:hover {
+    text-decoration: underline;
 }
-option::selection {
-    background-color: transparent;
+
+#red-text-tooltip {
+    position: absolute;
+    background-color: var(--slate-color);
+
+    left: 0px;
+    top: 100%;
+
+    border: solid 2px;
+
+    visibility: hidden;
 }
+
+#red-text {
+    color: lightcoral;
+    display: inline-block;
+    position: relative;
+}
+
+#red-text:hover > #red-text-tooltip {
+    visibility: visible;
+}
+
+#hover-msg {
+    display: inline;
+}
+
 .devlogs-desc {
-    margin-bottom: 30px;
+    margin: 20px 0;
 }
 
 .devlog-listing {
     display: none;
+    margin-top: 30px;
 }
 .devlog-listing:last-child {
     display: none;
@@ -268,25 +290,7 @@ option::selection {
     border: solid lightcoral 2px;
 }
 .devlog-doesnt-exist {
-    color: lightcoral;
-}
-
-#pics-container {
-    display: grid;
-    min-height: 10px;
-    background-color: lightgreen;
-}
-.pic-column {
-    display: flex;
-    flex-direction: column;
-    background-color: lightblue;
-    margin: 10px;
-    min-height: 10px;
-}
-
-.pic {
-    margin-bottom: 10px;
-    width: 100%;
+    color: lightblue;
 }
 
 #image-holder {
@@ -295,5 +299,48 @@ option::selection {
 
 #main {
     max-width: 700px;
-    border: solid lightseagreen 2px;
+    width: 100%;
+}
+
+#pics-container {
+    display: grid;
+    min-height: 10px;
+}
+.pic-column {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    min-height: 10px;
+}
+
+.pic {
+    margin-bottom: 20px;
+    width: 100%;
+    outline: solid 5px lightgray;
+
+    transition: 0.5s;
+}
+.pic:hover {
+    rotate: 5deg;
+}
+
+#pics-modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: #26282Ab0;
+
+    z-index: 100;
+}
+
+#enlarged-pic {
+    width: 500px;
+    outline: solid 5px lightgray;
 }

@@ -68,19 +68,30 @@ function addDropdownEvents() {
     }
 }
 
+
+
 function fadeIn(elem) {
+    const parentID = elem.parentElement.id;
+    
     let op = 0.1;
 
     const timer = setInterval(() => {
-
-        elem.style.opacity = op;
-
-        if (elem.style.opacity >= 1) {
-            elem.style.opacity = 1;
+        const currOp = parseFloat(elem.style.opacity);
+        
+        if (parentID !== activeSectionID) {
+            elem.style.opacity = "0";
             clearInterval(timer);
+            return;
         }
-
-        op += op * 0.1;
+        else if (currOp >= 1) {
+            elem.style.opacity = "1";
+            clearInterval(timer);
+            return;
+        }
+        else {  
+            elem.style.opacity = op;
+            op += op * 0.2;    
+        }
         
     }, 10);
 
@@ -88,6 +99,7 @@ function fadeIn(elem) {
 }
 function fadeInStartingWith(elem) {
     if (elem == undefined) return;
+    elem.style.opacity = 0;
     fadeIn(elem);
     setTimeout(() => fadeInStartingWith(elem.nextElementSibling), 50);
 }
@@ -208,11 +220,11 @@ fetchJSON("data/projects.json", (projects) => {
 
         }).then(() => {
             addDropdownEvents();
-            setActiveSection("home");
+            setActiveSection("devlogs");
             setActiveDevlog("project1");
         }).catch((reason) => {
             const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"))
-            doesntExistMsg.textContent = "no devlog";
+            doesntExistMsg.textContent = "it seems i haven't written any devlogs for this project yet :c";
         })
     }
 
@@ -230,6 +242,9 @@ function minIndex(arr) {
     return res;
 }
 
+const picsModal = document.getElementById("pics-modal");
+const enlargedPic = document.getElementById("enlarged-pic");
+
 const pictureWidth = 200;
 let pictureCols = 0;
 const pictureCont = document.getElementById("pics-container");
@@ -241,7 +256,6 @@ const main = document.getElementById("main");
 function stackPictures() {
 
     const newCols = Math.floor(main.clientWidth / pictureWidth);
-    console.log(main.clientWidth);
 
     if (pictureCols != newCols) {
 
@@ -255,31 +269,54 @@ function stackPictures() {
             flexBoxes[i] = newElement("div", "pic-column");
             pictureCont.appendChild(flexBoxes[i]);
         }
-        console.log("flexboxes", flexBoxes);
         const heights = new Array(pictureCols).fill(0);
         
         for (const pic of pics) {
             const i = minIndex(heights);
-            flexBoxes[i].appendChild(pic.cloneNode(false));
+            const clonedPic = pic.cloneNode(false)
+            flexBoxes[i].appendChild(clonedPic);
 
             // ratio between height and width determines height value, since pic.clientHeight was 0 during the first time this is called
             heights[i] += (pic.naturalHeight / pic.naturalWidth); 
+
+
+            clonedPic.addEventListener("click", (e) => {
+                picsModal.style.display = "flex";
+                enlargedPic.src = pic.src;
+
+                if ((pic.naturalWidth / window.innerWidth) < (pic.naturalHeight / window.innerHeight)) {
+                    enlargedPic.style.width = "auto";
+                    enlargedPic.style.height = (window.innerHeight - 200) + "px";
+                } else {
+                    enlargedPic.style.width = (window.innerWidth - 200) + "px";
+                    enlargedPic.style.height = "auto";
+                }
+            });
         }
     }
 }
 
 window.onload = () => { 
     stackPictures(); 
-    // stackSoon();
+    stackSoon();
 };
 
-// function stackSoon() {
-//     if (pictureCols === 0) {
-//         console.log("retrying");
-//         stackPictures();
-//         setTimeout(() => {stackSoon()}, 200);
-//     }   
-// }
+function stackSoon() {
+    if (pictureCols === 0) {
+        console.log("retrying stacking pictures..");
+        stackPictures();
+        setTimeout(() => {stackSoon()}, 200);
+    }   
+}
 
         
 window.addEventListener("resize", () => { stackPictures(); });
+
+picsModal.addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) 
+        picsModal.style.display = "none";
+})
+
+// document.getElementById("red-text").addEventListener("mouseover", () => {
+
+// })
