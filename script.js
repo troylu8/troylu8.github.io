@@ -30,7 +30,6 @@ const allDropdownLinks = document.getElementsByClassName("dropdown-link");
 
 function setActiveDevlog(projectName) {
     if (activeDevlogID === `${projectName}-devlog-listing`) return;
-    console.log(`${projectName}-devlog-listing`);
     activeDevlogID = `${projectName}-devlog-listing`;
 
     if (activeDevlog !== null) activeDevlog.style.display = "none";
@@ -58,12 +57,11 @@ function addDropdownEvents() {
                 optionPanel.style.display = "none";
         })
 
-        console.log(optionPanel.getElementsByTagName("*").length);
-
         for (const op of optionPanel.getElementsByTagName("*")) {
             op.addEventListener("click", () => {
                 optionPanel.style.display = "none";
                 setActiveDevlog(op.textContent);
+                window.scrollTo(0, 0);
             })
         }
     
@@ -103,12 +101,12 @@ function setChildrenTransparent(parentElem) {
 
 function fetchJSON(filepath, cb) {
     return fetch(filepath)
-        .then(res => {
-            if (!res.ok)
-                throw new Error("response unsuccessful", {cause: res});
-            return res;
+        .then(response => {
+            if (!response.ok)
+                throw new Error("response unsuccessful", {cause: response});
+            return response;
         })
-        .then(res => res.json())
+        .then(response => response.json())
         .then(data => {
             cb(data);
         });
@@ -210,7 +208,7 @@ fetchJSON("data/projects.json", (projects) => {
 
         }).then(() => {
             addDropdownEvents();
-            setActiveSection("devlogs");
+            setActiveSection("home");
             setActiveDevlog("project1");
         }).catch((reason) => {
             const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"))
@@ -219,3 +217,69 @@ fetchJSON("data/projects.json", (projects) => {
     }
 
 });
+
+function minIndex(arr) {
+    let res = 0;
+    let smallest = Number.MAX_VALUE;
+    for (const i in arr) {
+        if (arr[i] < smallest) {
+            smallest = arr[i]
+            res = i;
+        }
+    }
+    return res;
+}
+
+const pictureWidth = 200;
+let pictureCols = 0;
+const pictureCont = document.getElementById("pics-container");
+
+const pics = document.getElementById("image-holder").getElementsByTagName("*");
+
+const main = document.getElementById("main");
+
+function stackPictures() {
+
+    const newCols = Math.floor(main.clientWidth / pictureWidth);
+    console.log(main.clientWidth);
+
+    if (pictureCols != newCols) {
+
+        pictureCols = Math.max(newCols, 1);
+        pictureCont.style.gridTemplateColumns = `repeat(${newCols}, 1fr)`;
+        
+        pictureCont.replaceChildren();
+
+        const flexBoxes = Array.apply(null, new Array(pictureCols));
+        for (const i in flexBoxes) {
+            flexBoxes[i] = newElement("div", "pic-column");
+            pictureCont.appendChild(flexBoxes[i]);
+        }
+        console.log("flexboxes", flexBoxes);
+        const heights = new Array(pictureCols).fill(0);
+        
+        for (const pic of pics) {
+            const i = minIndex(heights);
+            flexBoxes[i].appendChild(pic.cloneNode(false));
+
+            // ratio between height and width determines height value, since pic.clientHeight was 0 during the first time this is called
+            heights[i] += (pic.naturalHeight / pic.naturalWidth); 
+        }
+    }
+}
+
+window.onload = () => { 
+    stackPictures(); 
+    // stackSoon();
+};
+
+// function stackSoon() {
+//     if (pictureCols === 0) {
+//         console.log("retrying");
+//         stackPictures();
+//         setTimeout(() => {stackSoon()}, 200);
+//     }   
+// }
+
+        
+window.addEventListener("resize", () => { stackPictures(); });

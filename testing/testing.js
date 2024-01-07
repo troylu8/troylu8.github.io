@@ -1,12 +1,6 @@
 
-function func(one) {
-    console.log("one " + one);
-}
-function func(list) {
-    console.log(typeof list);
-    for (const item of list) {
-        console.log(item);
-    }
-}
+const arr = Array.apply(null, new Array(10));
 
-func("a");
+for (const i in arr) 
+    arr[i] = "abc";
+console.log(arr);

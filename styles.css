@@ -26,7 +26,7 @@ body {
 
     display: flex;
     flex-direction: column;
-
+    align-items: center;
     margin: 0;
 }
 
@@ -69,6 +69,44 @@ body {
 
     outline: solid lightcoral 2px;
     background-color: #26282Ab0;
+
+    z-index: 10;
+}
+
+.section-link {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+
+    font-size: 18px;
+
+    z-index: 10;
+}
+
+.section-link-inactive {
+    padding: 0px 5px;
+}
+.section-link-active {
+    outline: solid 2px var(--oat-color);
+}
+.section-link-active + .section-link-underline {
+    display: none;
+}
+
+.section-link-underline {
+    width: 0;
+    height: 3px;
+    background-color: var(--oat-color);
+    
+    transition: 0.25s;
+
+    z-index: 10;
+}
+.section-link:hover {
+    cursor: pointer;
+}
+.section-link:hover > .section-link-underline {
+    width: 100%;
 }
 
 #bottom-image {
@@ -103,38 +141,6 @@ body {
 .icon-link:hover > img {
     margin-top: 0px;
     margin-bottom: 8px;
-}
-
-.section-link {
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-
-    font-size: 18px;
-}
-
-.section-link-inactive {
-    padding: 0px 5px;
-}
-.section-link-active {
-    outline: solid 2px var(--oat-color);
-}
-.section-link-active + .section-link-underline {
-    display: none;
-}
-
-.section-link-underline {
-    width: 0;
-    height: 3px;
-    background-color: var(--oat-color);
-    
-    transition: 0.25s;
-}
-.section-link:hover {
-    cursor: pointer;
-}
-.section-link:hover > .section-link-underline {
-    width: 100%;
 }
 
 .section {
@@ -263,14 +269,31 @@ option::selection {
 }
 .devlog-doesnt-exist {
     color: lightcoral;
-    
 }
 
-#pics-grid {
+#pics-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 10px;
+    background-color: lightgreen;
+}
+.pic-column {
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    margin: 10px;
+    min-height: 10px;
 }
 
 .pic {
+    margin-bottom: 10px;
     width: 100%;
+}
+
+#image-holder {
+    display: none;
+}
+
+#main {
+    max-width: 700px;
+    border: solid lightseagreen 2px;
 }

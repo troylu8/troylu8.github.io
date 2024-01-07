@@ -34,6 +34,42 @@
         "links": [
             "https://github.com/"
         ]
+    },
+    {
+        "name": "zxcbfd",
+        "desc": "xcbvdfs", 
+        "date": " date of project3",
+        "image-path": "images/projects/under table cropped.jpg",
+        "link-icons": [
+            "images/icons/github.png"
+        ],
+        "links": [
+            "https://github.com/"
+        ]
+    },
+    {
+        "name": "234rwef",
+        "desc": "asdasd", 
+        "date": " date of project3",
+        "image-path": "images/projects/under table cropped.jpg",
+        "link-icons": [
+            "images/icons/github.png"
+        ],
+        "links": [
+            "https://github.com/"
+        ]
+    },
+    {
+        "name": "abadfas",
+        "desc": "asdaflkodjv", 
+        "date": " date of project3",
+        "image-path": "images/projects/under table cropped.jpg",
+        "link-icons": [
+            "images/icons/github.png"
+        ],
+        "links": [
+            "https://github.com/"
+        ]
     }
 ]
 

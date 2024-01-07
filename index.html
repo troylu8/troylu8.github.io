@@ -8,6 +8,14 @@
 
     <body>
 
+        <div id="image-holder">
+            <img class="pic" src="images/pics/against rainy glass.png">
+            <img class="pic" src="images/pics/catto.jpg">
+            <img class="pic" src="images/pics/sitting on couch.jpg">
+            <img class="pic" src="images/pics/under table cropped.jpg">
+            <img class="pic" src="images/pics/under table.jpg">
+        </div>
+
         <nav id="section-link-nav">
             <div class="section-link" onclick='setActiveSection("home")'>
                 <div id="home-link" class="section-link-inactive"> home </div>
@@ -27,57 +35,53 @@
             </div>
         </nav>
 
-        <div id="home" class="section">
-            <h1 id="hey"> hey </h1>
+        <main id="main">
 
-            <p id="greeting"> greeting! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus quaerat reiciendis facere incidunt tempore! Nobis delectus totam, magni deserunt quisquam suscipit repellendus recusandae animi quo cum sed, blanditiis ducimus rerum? </p>
+            <div id="home" class="section">
+                <h1 id="hey"> hey </h1>
+    
+                <p id="greeting"> greeting! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus quaerat reiciendis facere incidunt tempore! Nobis delectus totam, magni deserunt quisquam suscipit repellendus recusandae animi quo cum sed, blanditiis ducimus rerum? </p>
+                
+            </div>
             
-        </div>
-        
-        <div id="projects" class="section">
-
-            <h1> projects </h1>
-            
-        </div>
-
-
-        <div id="devlogs" class="section">
-
-            <h1> 
-                <div class="dropdown" > 
-                    <div class="dropdown-link"> _ </div>
-                    <div class="dropdown-panel"></div>
+            <div id="projects" class="section">
+    
+                <h1> projects </h1>
+                
+            </div>
+    
+    
+            <div id="devlogs" class="section">
+    
+                <h1> 
+                    <div class="dropdown" > 
+                        <div class="dropdown-link"> _ </div>
+                        <div class="dropdown-panel"></div>
+                    </div>
+                    devlog 
+                </h1>
+                <div class="devlogs-desc"> 
+                    desc about 
+                    <div class="dropdown" > 
+                        <div class="dropdown-link"> _ </div>
+                        <div class="dropdown-panel"></div>
+                    </div>
                 </div>
-                devlog 
-            </h1>
-            <div class="devlogs-desc"> 
-                desc about 
-                <div class="dropdown" > 
-                    <div class="dropdown-link"> _ </div>
-                    <div class="dropdown-panel"></div>
+    
+    
+                
+            </div>
+    
+            <div id="pics" class="section">
+    
+                <div id="pics-container">
+    
                 </div>
+    
             </div>
 
+        </main>
 
-            <!-- <div id="project1-devlog-listing" class="devlog-listing">
-
-                <div class="devlog-entry">
-
-                    <h2> title </h2>
-                    <p> body Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque fuga, alias est laborum a, odit facilis laboriosam voluptate magnam voluptates placeat, pariatur totam nostrum perferendis quas. Amet perspiciatis ea veritatis.</p>
-                    <p class="date">date</p>    
-                </div>
-
-            </div> -->
-        </div>
-
-        <div id="pics" class="section">
-
-            <div id="pics-grid">
-
-            </div>
-
-        </div>
 
         <div id="bottom-image-div">
             <img src="images/pics/against rainy glass.png" id="bottom-image">
@@ -89,33 +93,61 @@
 
 </html>
 
+
+<!-- BELOW ARE THE JS GENERATED ELEMENTS SHOWN IN HTML -->
+
 <!--  
-<div class="project-panel">
-<div class="project-panel-info">
-    <h2> project title </h2>
-    <p> desc Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore aliquam officia sed earum, dolorem deleniti nesciunt molestias veniam et neque? Hic repellat praesentium, modi illo nisi ipsum nihil blanditiis sunt?</p>
-    
-    <div class="project-panel-bottom">
-        <div>
-            <nav class="icon-link-nav">
-                <div class="icon-link"> <img src="images/icons/github.png"> </div>
-                <div class="icon-link"> <img src="images/icons/discord.jpg"> </div>
-            </nav>
-            <p class="date"> updated date </p>
+    PROJECT PANEL STRUCTURE
+
+    <div class="project-panel">
+    <div class="project-panel-info">
+        <h2> project title </h2>
+        <p> desc Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore aliquam officia sed earum, dolorem deleniti nesciunt molestias veniam et neque? Hic repellat praesentium, modi illo nisi ipsum nihil blanditiis sunt?</p>
+        
+        <div class="project-panel-bottom">
+            <div>
+                <nav class="icon-link-nav">
+                    <div class="icon-link"> <img src="images/icons/github.png"> </div>
+                    <div class="icon-link"> <img src="images/icons/discord.jpg"> </div>
+                </nav>
+                <p class="date"> updated date </p>
+            </div>
         </div>
     </div>
-</div>
-<div class="project-panel-image">
-    <img src="images/projects/under table cropped.jpg">
-</div>
-</div>
-<div class="divider"> <div></div> </div> -->
+    <div class="project-panel-image">
+        <img src="images/projects/under table cropped.jpg">
+    </div>
+    </div>
+-->
 
-<!-- <option value="project1-devlog"> project1 </option> -->
 
-<!-- <div class="devlog-entry">
+<!-- 
+    DIVIDER STRUCTURE
 
-    <h2> title </h2>
-    <p> body Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque fuga, alias est laborum a, odit facilis laboriosam voluptate magnam voluptates placeat, pariatur totam nostrum perferendis quas. Amet perspiciatis ea veritatis.</p>
-    <p class="date">date</p>    
-</div> -->
+    <div class="divider"> <div></div> </div> 
+-->
+
+<!-- 
+    DEVLOG OPTION STRUCTURE
+    
+    <option value="project1-devlog"> project1 </option> 
+-->
+
+<!-- 
+    DEVLOG LISTING AND ENTRY STRUCTURE
+
+    <div id="project1-devlog-listing" class="devlog-listing">
+        <div class="devlog-entry">
+
+            <h2> title </h2>
+            <p> body Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque fuga, alias est laborum a, odit facilis laboriosam voluptate magnam voluptates placeat, pariatur totam nostrum perferendis quas. Amet perspiciatis ea veritatis.</p>
+            <p class="date">date</p>    
+        </div>
+    </div> 
+-->
+
+<!-- 
+    PIC STRUCTURE
+
+    <img class="pic" src="images/pics/cat-photo.jpg"> 
+-->
