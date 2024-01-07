@@ -210,59 +210,61 @@ function addProjectPanel(proj) {
         .appendChild(document.createElement("div"));
 }
 
-
-fetchJSON("data/projects.json", (projects) => {
-
-
-    for (const proj of projects) {
-        addProjectPanel(proj);
-
-        for (const panel of document.getElementsByClassName("dropdown-panel")) {
+function addDevlogListing(projName) {
+    for (const panel of document.getElementsByClassName("dropdown-panel")) {
             
-            const option = panel.appendChild(document.createElement("option"));
-            option.value = `${proj['name']}-devlog`;
-            option.textContent = proj['name'];
-        }
-
-        const devlogListing = document
-                                .getElementById("devlogs")
-                                .appendChild(newElement("div", "devlog-listing"))
-        devlogListing.id = `${proj['name']}-devlog-listing`;
-
-        fetchJSON(`data/devlogs/${proj['name']}.json`, (devlogs) => {
-
-            for (const log of devlogs) {
-                const entry = devlogListing.appendChild(newElement("div", "devlog-entry"));
-                
-                entry
-                    .appendChild(document.createElement("h2"))
-                    .textContent = log['title'];
-                
-                entry
-                    .appendChild(document.createElement("p"))
-                    .innerHTML = log['body'];
-                
-                entry
-                    .appendChild(newElement("p", "date"))
-                    .textContent = log['date'];
-
-                devlogListing
-                    .appendChild(newElement("div", "divider"))
-                    .appendChild(document.createElement("div"));
-            }
-
-
-        }).then(() => {
-            addDropdownEvents();
-            setActiveSection("home");
-            setActiveDevlog("project1");
-        }).catch((reason) => {
-            const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"))
-            doesntExistMsg.textContent = "it seems i haven't written any devlogs for this project yet :c";
-        })
+        const option = panel.appendChild(document.createElement("option"));
+        option.value = `${projName}-devlog`;
+        option.textContent = projName;
     }
 
+    const devlogListing = document
+                            .getElementById("devlogs")
+                            .appendChild(newElement("div", "devlog-listing"))
+    devlogListing.id = `${projName}-devlog-listing`;
+
+    return fetchJSON(`data/devlogs/${projName}.json`, (devlogs) => {
+
+        for (const log of devlogs) {
+            const entry = devlogListing.appendChild(newElement("div", "devlog-entry"));
+            
+            entry
+                .appendChild(document.createElement("h2"))
+                .textContent = log['title'];
+            
+            entry
+                .appendChild(document.createElement("p"))
+                .innerHTML = log['body'];
+            
+            entry
+                .appendChild(newElement("p", "date"))
+                .textContent = log['date'];
+
+            devlogListing
+                .appendChild(newElement("div", "divider"))
+                .appendChild(document.createElement("div"));
+        }
+
+
+    });
+}
+
+
+fetchJSON("data/projects.json", (projects) => {
+    for (const proj of projects) {
+        addProjectPanel(proj);
+        addDevlogListing(proj['name']);
+    }
 });
+addDevlogListing("my website")
+    .then(() => {
+        addDropdownEvents();
+        setActiveSection("home");
+        setActiveDevlog("project1");
+    }).catch((reason) => {
+        const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"))
+        doesntExistMsg.textContent = "it seems i haven't written any devlogs for this project yet :c";
+    });
 
 function minIndex(arr) {
     let res = 0;
