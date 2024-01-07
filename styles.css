@@ -163,7 +163,7 @@ body {
 }
 .divider > div {
     background-color: var(--oat-color);
-    width: 60%;
+    width: 40%;
     height: 2px;
 }
 .divider:last-child {
@@ -282,6 +282,9 @@ option:hover {
 }
 .devlog-listing:last-child {
     display: none;
+}
+.devlog-entry {
+    margin-left: 10%;
 }
 .devlog-doesnt-exist {
     color: lightblue;

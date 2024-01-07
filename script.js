@@ -6,6 +6,8 @@ let activeSectionID = null;
 let activeSection = null;
 let activeSectionLink = null;
 
+const colors = ["lightcoral", "lightblue", "lightgreen"];
+
 function setActiveSection(id) {
     if (activeSectionID === id) return;
     activeSectionID = id;
@@ -18,9 +20,13 @@ function setActiveSection(id) {
     activeSection.style.display = "flex";
     fadeInChildren(activeSection);
 
-    if (activeSectionLink !== null) activeSectionLink.classList.remove("section-link-active");
+    if (activeSectionLink !== null) {
+        activeSectionLink.classList.remove("section-link-active");
+        activeSectionLink.style.color = oatColor;
+    }
     activeSectionLink = document.getElementById(id + "-link");
     activeSectionLink.classList.add("section-link-active");
+    activeSectionLink.style.color = colors[Math.floor(Math.random() * colors.length)];
 
     window.scrollTo(0, 0);
 }
