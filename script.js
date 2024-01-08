@@ -198,11 +198,12 @@ function addProjectPanel(proj) {
                     .appendChild(newElement("p", "date"))
                     .textContent = proj['date'];
 
-
-        panel
-            .appendChild(newElement("div", "project-panel-image"))
-            .appendChild(document.createElement("img"))
-            .src = proj['image-path'];
+        
+        const imgElement = panel
+                            .appendChild(newElement("div", "project-panel-image"))
+                            .appendChild(document.createElement("img"))
+        imgElement.src = proj['image-path'];
+        imgElement.addEventListener("click", () => { showEnlargedView(imgElement); })
 
     projectSection
         .appendChild(newElement("div", "divider"))
@@ -294,6 +295,19 @@ const pictureNames = [
 
 const main = document.getElementById("main");
 
+function showEnlargedView(picElement) {
+    picsModal.style.display = "flex";
+    enlargedPic.src = picElement.src;
+
+    if ((picElement.naturalWidth / window.innerWidth) < (picElement.naturalHeight / window.innerHeight)) {
+        enlargedPic.style.width = "auto";
+        enlargedPic.style.height = (window.innerHeight - 100) + "px";
+    } else {
+        enlargedPic.style.width = (window.innerWidth - 100) + "px";
+        enlargedPic.style.height = "auto";
+    }
+}
+
 function stackPictures() {
 
     const newCols = Math.floor(main.clientWidth / pictureWidth);
@@ -325,18 +339,7 @@ function stackPictures() {
             // ratio between height and width determines height value, since pic.clientHeight was 0 during the first time this is called
             heights[i] += (name.naturalHeight / name.naturalWidth); 
 
-            picElement.addEventListener("click", (e) => {
-                picsModal.style.display = "flex";
-                enlargedPic.src = "images/pics/" + name;
-
-                if ((picElement.naturalWidth / window.innerWidth) < (picElement.naturalHeight / window.innerHeight)) {
-                    enlargedPic.style.width = "auto";
-                    enlargedPic.style.height = (window.innerHeight - 100) + "px";
-                } else {
-                    enlargedPic.style.width = (window.innerWidth - 100) + "px";
-                    enlargedPic.style.height = "auto";
-                }
-            });
+            picElement.addEventListener("click", () => { showEnlargedView(picElement); });
         }
     }
 }

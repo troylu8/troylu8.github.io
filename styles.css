@@ -59,6 +59,13 @@ body {
     margin-bottom: 100px;
 }
 
+#ill-try {
+    color: rgba(211, 211, 211, 0.5);
+    text-decoration: none;
+    font-size: 0.7em;
+    margin-top: 10px;
+}
+
 #email:hover {
     text-decoration: underline;
 }
@@ -201,6 +208,10 @@ body {
 }
 .section > * {
     opacity: 0;
+}
+
+#projects > h1 {
+    margin-bottom: 40px;
 }
 
 .project-panel {
