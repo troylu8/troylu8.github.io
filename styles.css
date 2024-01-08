@@ -64,6 +64,10 @@ body {
     text-decoration: none;
     font-size: 0.7em;
     margin-top: 10px;
+    transition: 0.5s;
+}
+#ill-try:hover {
+    color: rgba(211, 211, 211, 0.9);
 }
 
 #email:hover {
@@ -104,6 +108,12 @@ body {
     font-size: 18px;
 
     z-index: 10;
+}
+
+@media screen and (max-width: 800px) {
+    .section-link {
+        font-size: 30px;
+    }
 }
 
 .section-link-inactive {
@@ -267,6 +277,10 @@ h2 {
 }
 .project-panel-image > img {
     width: 100%;
+    transition: 0.5s;
+}
+.project-panel-image > img:hover {
+    rotate: 5deg;
 }
 
 

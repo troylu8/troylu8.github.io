@@ -165,6 +165,15 @@ function openTab(link) {
 
 const projectSection = document.getElementById("projects");
 
+function addIconLink(parentNav, imgsrc, onclick) {
+    const iconLink = parentNav.appendChild(newElement("div", "icon-link"));
+    iconLink.addEventListener("click", () => { onclick(); });
+
+    iconLink
+        .appendChild(document.createElement("img"))
+        .src = imgsrc;
+}
+
 function addProjectPanel(proj) {
     const panel = projectSection.appendChild(newElement("div", "project-panel"));
     
@@ -183,16 +192,12 @@ function addProjectPanel(proj) {
             
                 const iconLinks = divInBottom.appendChild(newElement("nav", "icon-link-nav"));
                 for (const i in proj['links']) {
-                    const iconLink = iconLinks.appendChild(newElement("div", "icon-link"));
-                    iconLink.addEventListener("click", () => {
-                        openTab(proj['links'][i]);
-                    })
-
-                    iconLink
-                        .appendChild(document.createElement("img"))
-                        .src = proj['link-icons'][i];
-
+                    addIconLink(iconLinks, proj['link-icons'][i], () => openTab(proj['links'][i]));
                 }
+                addIconLink(iconLinks, "images/icons/journal.jpg", () => {
+                    setActiveSection("devlogs");
+                    setActiveDevlog(proj['name']);
+                });
         
                 divInBottom
                     .appendChild(newElement("p", "date"))
@@ -325,6 +330,7 @@ function stackPictures() {
             pictureCont.appendChild(flexBoxes[i]);
         }
         const heights = new Array(pictureCols).fill(0);
+        console.log(main.clientWidth / pictureCols); //TODO: heres the width!!!!!!
         
         for (const name of pictureNames) {
             const i = minIndex(heights);
@@ -334,10 +340,11 @@ function stackPictures() {
             picElement.classList.add("pic")
 
             flexBoxes[i].appendChild(picElement);
-
+            
 
             // ratio between height and width determines height value, since pic.clientHeight was 0 during the first time this is called
-            heights[i] += (name.naturalHeight / name.naturalWidth); 
+            heights[i] += picElement.clientHeight; 
+            console.log(heights);
 
             picElement.addEventListener("click", () => { showEnlargedView(picElement); });
         }
