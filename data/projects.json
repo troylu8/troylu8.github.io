@@ -5,7 +5,7 @@
         "date": "work-in-progress",
         "image-path": "images/projects/archangels scythe sprites.png",
         "link-icons": [
-            "images/icons/github.png"
+            "images/icons/github.jpg"
         ],
         "links": [
             "https://github.com/troylu8/archangels"
@@ -17,10 +17,24 @@
         "date": "july 2023",
         "image-path": "images/projects/note-icon.png",
         "link-icons": [
-            "images/icons/github.png"
+            "images/icons/github.jpg",
+            "images/icons/youtube.png"
         ],
         "links": [
-            "https://github.com/troylu8/MyNote"
+            "https://github.com/troylu8/MyNote",
+            "https://www.youtube.com/watch?v=Xm49nY0cPlM"
+        ]
+    },
+    {
+        "name": "Twenty",
+        "desc": "a timer to help keep track of the 20 20 20 rule for resting your eyes.<br><br>as you can tell by the terrible ui, its not finished. I'm actually procrastinating working on it by making this website.", 
+        "date": "work-in-progress",
+        "image-path": "images/projects/twenty.png",
+        "link-icons": [
+            "images/icons/github.jpg"
+        ],
+        "links": [
+            "https://github.com/troylu8/Twenty"
         ]
     }
     

@@ -24,6 +24,9 @@ body {
     background-color: var(--slate-color); 
     color: var(--oat-color);
 
+    font-family: "Overpass", sans-serif;
+    letter-spacing: 0.3px;
+
     display: flex;
     flex-direction: column;
     align-items: center;

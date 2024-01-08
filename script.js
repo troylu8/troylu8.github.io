@@ -128,7 +128,6 @@ function fadeInStartingWith(elem) {
         if (elem.style.opacity != "1") {
             elem.style.opacity = "1";
             clearInterval(timer);
-            console.log("took too long");
         }
     }, expectedFinishTime + 100) );
     setTimeout(() => fadeInStartingWith(elem.nextElementSibling), 50);
@@ -249,6 +248,7 @@ function addDevlogListing(projName) {
     }).catch((reason) => {
         const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"));
         doesntExistMsg.textContent = "it seems i haven't written any devlogs for this project yet :c";
+        doesntExistMsg.style.marginLeft = "10%";
     });
 }
 
