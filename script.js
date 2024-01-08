@@ -176,7 +176,7 @@ function addProjectPanel(proj) {
 
             info
                 .appendChild(document.createElement("p"))
-                .textContent = proj['desc'];
+                .innerHTML = proj['desc'];
 
             const divInBottom = info
                 .appendChild(newElement("div", "project-panel-bottom"))
@@ -210,6 +210,8 @@ function addProjectPanel(proj) {
         .appendChild(document.createElement("div"));
 }
 
+const devlogSection = document.getElementById("devlogs");
+
 function addDevlogListing(projName) {
     for (const panel of document.getElementsByClassName("dropdown-panel")) {
             
@@ -218,9 +220,7 @@ function addDevlogListing(projName) {
         option.textContent = projName;
     }
 
-    const devlogListing = document
-                            .getElementById("devlogs")
-                            .appendChild(newElement("div", "devlog-listing"))
+    const devlogListing = devlogSection.appendChild(newElement("div", "devlog-listing"));
     devlogListing.id = `${projName}-devlog-listing`;
 
     return fetchJSON(`data/devlogs/${projName}.json`, (devlogs) => {
@@ -246,6 +246,9 @@ function addDevlogListing(projName) {
         }
 
 
+    }).catch((reason) => {
+        const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"));
+        doesntExistMsg.textContent = "it seems i haven't written any devlogs for this project yet :c";
     });
 }
 
@@ -260,10 +263,7 @@ addDevlogListing("my website")
     .then(() => {
         addDropdownEvents();
         setActiveSection("home");
-        setActiveDevlog("project1");
-    }).catch((reason) => {
-        const doesntExistMsg = devlogListing.appendChild(newElement("p", "devlog-doesnt-exist"))
-        doesntExistMsg.textContent = "it seems i haven't written any devlogs for this project yet :c";
+        setActiveDevlog("my website");
     });
 
 function minIndex(arr) {
@@ -285,7 +285,12 @@ const pictureWidth = 200;
 let pictureCols = 0;
 const pictureCont = document.getElementById("pics-container");
 
-const pics = document.getElementById("image-holder").getElementsByTagName("*");
+const pictureNames = [
+    "against rainy glass.jpg",
+    "catto.jpg",
+    "sitting on couch.jpg",
+    "under table.jpg"
+]
 
 const main = document.getElementById("main");
 
@@ -307,20 +312,24 @@ function stackPictures() {
         }
         const heights = new Array(pictureCols).fill(0);
         
-        for (const pic of pics) {
+        for (const name of pictureNames) {
             const i = minIndex(heights);
-            const clonedPic = pic.cloneNode(false)
-            flexBoxes[i].appendChild(clonedPic);
+
+            const picElement = document.createElement("img");
+            picElement.src = "images/pics/" + name;
+            picElement.classList.add("pic")
+
+            flexBoxes[i].appendChild(picElement);
+
 
             // ratio between height and width determines height value, since pic.clientHeight was 0 during the first time this is called
-            heights[i] += (pic.naturalHeight / pic.naturalWidth); 
+            heights[i] += (name.naturalHeight / name.naturalWidth); 
 
-
-            clonedPic.addEventListener("click", (e) => {
+            picElement.addEventListener("click", (e) => {
                 picsModal.style.display = "flex";
-                enlargedPic.src = pic.src;
+                enlargedPic.src = "images/pics/" + name;
 
-                if ((pic.naturalWidth / window.innerWidth) < (pic.naturalHeight / window.innerHeight)) {
+                if ((picElement.naturalWidth / window.innerWidth) < (picElement.naturalHeight / window.innerHeight)) {
                     enlargedPic.style.width = "auto";
                     enlargedPic.style.height = (window.innerHeight - 100) + "px";
                 } else {

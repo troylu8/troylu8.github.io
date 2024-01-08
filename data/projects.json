@@ -1,75 +1,28 @@
 [
     {
-        "name": "project1",
-        "desc": "description for project1", 
-        "date": " date of project1",
-        "image-path": "images/projects/under table cropped.jpg",
+        "name": "archangels",
+        "desc": "an action roguelike about swinging a scythe around in the afterlife. <br> written using java.", 
+        "date": "work-in-progress",
+        "image-path": "images/projects/archangels scythe sprites.png",
         "link-icons": [
             "images/icons/github.png"
         ],
         "links": [
-            "https://github.com/"
+            "https://github.com/troylu8/archangels"
         ]
     },
     {
-        "name": "project2",
-        "desc": "description for project2", 
-        "date": " date of project2",
-        "image-path": "images/projects/under table cropped.jpg",
+        "name": "MyNote",
+        "desc": "an encrypted notetaking app made for the Congressional App Challenge 2023.", 
+        "date": "july 2023",
+        "image-path": "images/projects/note-icon.png",
         "link-icons": [
             "images/icons/github.png"
         ],
         "links": [
-            "https://github.com/"
-        ]
-    },
-    {
-        "name": "project3",
-        "desc": "description for project3", 
-        "date": " date of project3",
-        "image-path": "images/projects/under table cropped.jpg",
-        "link-icons": [
-            "images/icons/github.png"
-        ],
-        "links": [
-            "https://github.com/"
-        ]
-    },
-    {
-        "name": "zxcbfd",
-        "desc": "xcbvdfs", 
-        "date": " date of project3",
-        "image-path": "images/projects/under table cropped.jpg",
-        "link-icons": [
-            "images/icons/github.png"
-        ],
-        "links": [
-            "https://github.com/"
-        ]
-    },
-    {
-        "name": "234rwef",
-        "desc": "asdasd", 
-        "date": " date of project3",
-        "image-path": "images/projects/under table cropped.jpg",
-        "link-icons": [
-            "images/icons/github.png"
-        ],
-        "links": [
-            "https://github.com/"
-        ]
-    },
-    {
-        "name": "abadfas",
-        "desc": "asdaflkodjv", 
-        "date": " date of project3",
-        "image-path": "images/projects/under table cropped.jpg",
-        "link-icons": [
-            "images/icons/github.png"
-        ],
-        "links": [
-            "https://github.com/"
+            "https://github.com/troylu8/MyNote"
         ]
     }
+    
 ]
 

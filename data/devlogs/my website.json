@@ -1,7 +1,17 @@
 [
     {
-        "title": "website devlog 1",
-        "body": "i will write", 
-        "date": " today, maybe"
+        "title": "crushing a bug except i just learn to tolerate it instead",
+        "body": "Sometimes the webpage elements fade in really, really slowly instead of quickly like they're supposed to. I have no idea why. Like the <code>setInterval()</code> I'm using to gradually change their opacity is magically running slower or something. I don't know. I've been trying to debugging this for way too long. I don't know, maybe the answer will be revealed to me in a dream. That somehow has happened before, so who knows. Maybe I'm the chosen one. I don't know. The things I do not know include both the solution to this bug and whether I'll see it in a dream or not. I don't know. am i going insane? idk <br><br><br> if this bug happens please click the area thats not fading in a few times. why does this work? I DONT KNOW!!!!",
+        "date": "Jan 2024"
+    },
+    {
+        "title": "if it works..",
+        "body": "I was surprised when I found out that vanilla, library-less javascript didnt have a way to iterate through directories. Or at least I didn't find any. As a language made for websites, I'd imagine it would be pretty helpful to, say, loop through a folder of cat pictures to load onto the website. <br><br>..I just ended up keeping a list of file paths to loop through (that I'll have to update by hand whenever a photo is added or removed). If it works it works i guess...", 
+        "date": "Jan 2024"
+    },
+    {
+        "title": "javascript is not a strongly typed language",
+        "body": "about a week ago I started learning the holy trinity, html css and js, just to make this website. And it's been .. draining. <br><br> Especially javascript. I mean, I did like some parts of it, like how much less verbose it feels.  (looking at you, <code> public static void main(String[] args) </code>)  But coming from java, it was really jarring. Like how most of the time it feels like I have no idea what the object I'm working with is. I'll be hovering over the variable, asking (begging) vscode \"please, what type is this.. <i>thing</i> im using!?\" and all I'll get back is cold silence... and a tooltip that reads \"any\". Thanks mr ide. Very helpful. ", 
+        "date": "Jan 2024"
     }
 ]
