@@ -184,8 +184,8 @@ function addProjectPanel(proj) {
 
             info
                 .appendChild(document.createElement("p"))
-                .innerHTML = proj['desc'];
-
+                .innerHTML = proj['desc'];                
+            
             const divInBottom = info
                 .appendChild(newElement("div", "project-panel-bottom"))
                 .appendChild(document.createElement("div"));
@@ -208,7 +208,8 @@ function addProjectPanel(proj) {
                             .appendChild(newElement("div", "project-panel-image"))
                             .appendChild(document.createElement("img"))
         imgElement.src = proj['image-path'];
-        imgElement.addEventListener("click", () => { showEnlargedView(imgElement); })
+        imgElement.classList.add("tilt-on-hover");
+        imgElement.addEventListener("click", () => showEnlargedView(imgElement));
 
     projectSection
         .appendChild(newElement("div", "divider"))
@@ -237,10 +238,14 @@ function addDevlogListing(projName) {
                 .appendChild(document.createElement("h2"))
                 .textContent = log['title'];
             
-            entry
-                .appendChild(document.createElement("p"))
-                .innerHTML = log['body'];
-            
+            const body = entry.appendChild(document.createElement("p"))
+            body.innerHTML = log['body'];
+
+            for (const picElement of body.getElementsByTagName("img")) {
+                picElement.classList.add("tilt-on-hover");
+                picElement.addEventListener("click", () => showEnlargedView(picElement));
+            }
+    
             entry
                 .appendChild(newElement("p", "date"))
                 .textContent = log['date'];
@@ -268,9 +273,17 @@ fetchJSON("data/projects.json", (projects) => {
 addDevlogListing("my website")
     .then(() => {
         addDropdownEvents();
+
+        stackPictures();
+        stackSoon();
+
         setActiveSection("home");
         setActiveDevlog("my website");
     });
+
+window.onload = () => {
+
+};
 
 function minIndex(arr) {
     let res = 0;
@@ -306,9 +319,9 @@ function showEnlargedView(picElement) {
 
     if ((picElement.naturalWidth / window.innerWidth) < (picElement.naturalHeight / window.innerHeight)) {
         enlargedPic.style.width = "auto";
-        enlargedPic.style.height = (window.innerHeight - 100) + "px";
+        enlargedPic.style.height = `calc(${window.innerHeight}px - 20%)`;
     } else {
-        enlargedPic.style.width = (window.innerWidth - 100) + "px";
+        enlargedPic.style.width = `calc(${window.innerWidth}px - 20%)`;
         enlargedPic.style.height = "auto";
     }
 }
@@ -330,7 +343,7 @@ function stackPictures() {
             pictureCont.appendChild(flexBoxes[i]);
         }
         const heights = new Array(pictureCols).fill(0);
-        console.log(main.clientWidth / pictureCols); //TODO: heres the width!!!!!!
+        
         
         for (const name of pictureNames) {
             const i = minIndex(heights);
@@ -341,20 +354,14 @@ function stackPictures() {
 
             flexBoxes[i].appendChild(picElement);
             
-
-            // ratio between height and width determines height value, since pic.clientHeight was 0 during the first time this is called
-            heights[i] += picElement.clientHeight; 
+            // calculating client height of picture, since picElement.clientHeight is 0 for some reason
+            heights[i] += (main.clientWidth / pictureCols) * picElement.naturalHeight / picElement.naturalWidth;; 
             console.log(heights);
-
-            picElement.addEventListener("click", () => { showEnlargedView(picElement); });
+            picElement.classList.add("tilt-on-hover");
+            picElement.addEventListener("click", () => showEnlargedView(picElement));
         }
     }
 }
-
-window.onload = () => { 
-    stackPictures(); 
-    stackSoon();
-};
 
 function stackSoon() {
     if (pictureCols === 0) {
@@ -387,29 +394,32 @@ const email = document.getElementById("email");
 const emailCopied = document.getElementById("email-copied");
 
 let op;
-let emailTimer;
+let emailDelay;
+let emailFade;
 
 email.addEventListener("click", () => {
+
+    if (emailDelay != null) clearTimeout(emailDelay);
+    if (emailFade != null)  clearInterval(emailFade);
 
     emailCopied.style.visibility = "visible";
     emailCopied.style.opacity = "1";
     op = 1;
 
-    setTimeout(() => {
+    emailDelay = setTimeout(() => {
 
-        if (emailTimer != null) clearInterval(emailTimer);
-        emailTimer = setInterval(() => {
+        emailFade = setInterval(() => {
 
             if (op > 0.01) {
                 op *= 0.95;
                 emailCopied.style.opacity = op;
             } else {
-                clearInterval(emailTimer);
+                clearInterval(emailDelay);
                 emailCopied.style.visibility = "hidden";
             }
         }, 10);
 
-    }, 2000);
+    }, 1000);
 
     console.log("clicked email");
 })

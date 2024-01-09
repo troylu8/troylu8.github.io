@@ -110,12 +110,6 @@ body {
     z-index: 10;
 }
 
-@media screen and (max-width: 800px) {
-    .section-link {
-        font-size: 30px;
-    }
-}
-
 .section-link-inactive {
     padding: 0px 5px;
 }
@@ -277,12 +271,7 @@ h2 {
 }
 .project-panel-image > img {
     width: 100%;
-    transition: 0.5s;
 }
-.project-panel-image > img:hover {
-    rotate: 5deg;
-}
-
 
 .dropdown {
     color: lightcoral;
@@ -389,11 +378,6 @@ option:hover {
     margin-bottom: 20px;
     width: 100%;
     outline: solid 5px lightgray;
-
-    transition: 0.5s;
-}
-.pic:hover {
-    rotate: 5deg;
 }
 
 #pics-modal {
@@ -413,6 +397,22 @@ option:hover {
 }
 
 #enlarged-pic {
+    background-color: var(--slate-color);
     outline: solid 5px lightgray;
 }
 
+.tilt-on-hover {
+    transition: 0.5s;
+}
+.tilt-on-hover:hover {
+    rotate: 5deg;
+}
+
+@media screen and (max-width: 800px) {
+    .section-link {
+        font-size: 30px;
+    }
+    .section {
+        padding-top: 60px;
+    }
+}
