@@ -356,7 +356,6 @@ function stackPictures() {
             
             // calculating client height of picture, since picElement.clientHeight is 0 for some reason
             heights[i] += (main.clientWidth / pictureCols) * picElement.naturalHeight / picElement.naturalWidth;; 
-            console.log(heights);
             picElement.classList.add("tilt-on-hover");
             picElement.addEventListener("click", () => showEnlargedView(picElement));
         }
@@ -422,4 +421,33 @@ email.addEventListener("click", () => {
 
     }, 1000);
 
-})
+});
+
+function clamp(val, min, max) {
+    return Math.min(Math.max(val, min), max);
+}
+
+const linkNav = document.getElementById("section-link-nav");
+let scrolling = false;
+let pos = 0;
+let lastX = null;
+
+linkNav.addEventListener("touchstart", () => { scrolling = true; });
+document.body.addEventListener("touchend", () => { scrolling = false; lastX = null; });
+
+
+document.body.addEventListener("touchmove", (e) => {
+    if (lastX == null) { 
+        lastX = e.touches[0].clientX;
+        return;
+    }
+    const nowX = e.touches[0].clientX;
+
+    if (scrolling && main.clientWidth < linkNav.clientWidth) {
+        pos = clamp(pos + (nowX - lastX), main.clientWidth - linkNav.clientWidth, 0);
+
+        linkNav.style.left = pos + "px";
+    }
+
+    lastX = nowX;
+});

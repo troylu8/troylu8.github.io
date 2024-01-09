@@ -14,24 +14,26 @@
 
     <body>
         
-        <nav id="section-link-nav">
-            <div class="section-link" onclick='setActiveSection("home")'>
-                <div id="home-link" class="section-link-inactive"> home </div>
-                <div class="section-link-underline"></div>
-            </div>
-            <div class="section-link" onclick='setActiveSection("projects")'>
-                <div id="projects-link" class="section-link-inactive"> projects </div>
-                <div class="section-link-underline"></div>
-            </div>
-            <div class="section-link" onclick='setActiveSection("devlogs")'>
-                <div id="devlogs-link" class="section-link-inactive"> devlogs? </div>
-                <div class="section-link-underline"></div>
-            </div>
-            <div class="section-link" onclick='setActiveSection("pics")'>
-                <div id="pics-link" class="section-link-inactive"> pics </div>
-                <div class="section-link-underline"></div>
-            </div>
-        </nav>
+        <div id="section-link-container">
+            <nav id="section-link-nav">
+                <div class="section-link" onclick='setActiveSection("home")'>
+                    <div id="home-link" class="section-link-inactive"> home </div>
+                    <div class="section-link-underline"></div>
+                </div>
+                <div class="section-link" onclick='setActiveSection("projects")'>
+                    <div id="projects-link" class="section-link-inactive"> projects </div>
+                    <div class="section-link-underline"></div>
+                </div>
+                <div class="section-link" onclick='setActiveSection("devlogs")'>
+                    <div id="devlogs-link" class="section-link-inactive"> devlogs? </div>
+                    <div class="section-link-underline"></div>
+                </div>
+                <div class="section-link" onclick='setActiveSection("pics")'>
+                    <div id="pics-link" class="section-link-inactive"> pics </div>
+                    <div class="section-link-underline"></div>
+                </div>
+            </nav>    
+        </div>
 
         <main id="main">
 

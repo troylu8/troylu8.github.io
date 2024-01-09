@@ -1,7 +1,7 @@
 [
     {
         "title": "crushing a bug except i just learn to tolerate it instead",
-        "body": "Sometimes the webpage elements fade in really, really slowly instead of quickly like they're supposed to. I have no idea why. Like the <code>setInterval()</code> I'm using to gradually change their opacity is magically running slower or something. I don't know. I've been trying to debugging this for way too long. I don't know, maybe the answer will be revealed to me in a dream. That somehow has happened before, so who knows. Maybe I'm the chosen one. I don't know. The things I do not know include both the solution to this bug and whether I'll see it in a dream or not. I don't know. am i going insane? idk <br><br><br> if this bug happens please click the area thats not fading in a few times. why does this work? I DONT KNOW!!!!",
+        "body": "Sometimes the webpage elements fade in really, really slowly instead of quickly like they're supposed to. I have no idea why. Like the <code>setInterval()</code> I'm using to gradually change their opacity is magically running slower or something.<br><br> I don't know. I've been trying to debugging this for way too long. I don't know, maybe the answer will be revealed to me in a dream. That somehow has happened before, so who knows. Maybe I'm the chosen one. I don't know. The things I do not know include both the solution to this bug and whether I'll see it in a dream or not. I don't know. am i going insane? idk <br><br><br> if this bug happens please click the area thats not fading in a few times. why does this work? I DONT KNOW!!!!",
         "date": "Jan 2024"
     },
     {
