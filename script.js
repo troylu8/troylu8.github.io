@@ -382,7 +382,7 @@ picsModal.addEventListener("click", (e) => {
 const discordIconDiv = document.getElementById("discord-icon-div");
 const discordCopyMsg = document.getElementById("discord-copy-tooltip");
 discordIconDiv.addEventListener("click", () => {
-    navigator.clipboard.writeText("fiuu_")
+    navigator.clipboard.writeText("fiuu_");
     discordCopyMsg.innerText = "copied!"
 })
 discordIconDiv.addEventListener("mouseout", (e) => {
@@ -398,6 +398,7 @@ let emailDelay;
 let emailFade;
 
 email.addEventListener("click", () => {
+    navigator.clipboard.writeText("troylu8@gmail.com");
 
     if (emailDelay != null) clearTimeout(emailDelay);
     if (emailFade != null)  clearInterval(emailFade);
@@ -421,5 +422,4 @@ email.addEventListener("click", () => {
 
     }, 1000);
 
-    console.log("clicked email");
 })
