@@ -1,6 +1,7 @@
+const computed = getComputedStyle(document.documentElement);
 
-const oatColor = getComputedStyle(document.documentElement).getPropertyValue("--oat-color");
-const slateColor = getComputedStyle(document.documentElement).getPropertyValue("--slate-color");
+const oatColor = computed.getPropertyValue("--oat-color");
+const slateColor = computed.getPropertyValue("--slate-color");
 
 let activeSectionID = null;
 let activeSection = null;
@@ -429,8 +430,9 @@ function clamp(val, min, max) {
 
 const nav = document.getElementById("section-link-nav");
 
-const fadeWidth = 25 + parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-fade-dist").slice(0, -2));
-console.log(nav.clientWidth );
+const fadeWidth = 
+    parseInt(computed.getPropertyValue("--nav-arrow-size").slice(0, -2)) +
+    parseInt(computed.getPropertyValue("--nav-fade-dist").slice(0, -2));
 
 const cont = document.getElementById("section-link-container");
 console.log(nav.clientHeight);
@@ -440,7 +442,7 @@ let scrolling = false;
 let pos = fadeWidth;
 let lastX = null;
 
-nav.addEventListener("touchstart", () => { scrolling = true; });
+nav.addEventListener("touchstart", () => { scrolling = true; }, {passive: true});
 document.body.addEventListener("touchend", () => { scrolling = false; lastX = null; });
 
 
@@ -451,12 +453,9 @@ document.body.addEventListener("touchmove", (e) => {
     }
     const nowX = e.touches[0].clientX;
 
-    // console.log(viewWidth, nav.clientWidth, fadeWidth, viewWidth - nav.clientWidth - fadeWidth);
-
     if (scrolling && cont.clientWidth < nav.clientWidth) {
         pos = clamp(pos + (nowX - lastX), cont.clientWidth - nav.clientWidth - fadeWidth, fadeWidth);
         nav.style.left = pos + "px";
-        console.log(pos);
     }
 
     lastX = nowX;
