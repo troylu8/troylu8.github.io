@@ -272,20 +272,15 @@ fetchJSON("data/projects.json", (projects) => {
         addDevlogListing(proj['name']);
     }
 });
-addDevlogListing("my website")
-    .then(() => {
-        addDropdownEvents();
+addDevlogListing("my website").then(() => {
+    addDropdownEvents();
 
-        stackPictures();
-        stackSoon();
+    stackPictures();
+    stackSoon();
 
-        setActiveSection("home");
-        setActiveDevlog("my website");
-    });
-
-window.onload = () => {
-
-};
+    setActiveSection("home");
+    setActiveDevlog("my website");
+})
 
 function minIndex(arr) {
     let res = 0;
@@ -308,15 +303,14 @@ const pictureCont = document.getElementById("pics-container");
 
 const pictureNames = [
     "against rainy glass.jpg",
-    "catto.jpg",
-    "sitting on couch.jpg",
     "under table.jpg",
-    "close.jpg",
+    "catto.jpg",
+    "outside the door.jpg",
     "her new bed.jpg",
+    "close.jpg",
     "hnm.jpg",
     "lying down.jpg",
     "on her back.jpg",
-    "outside the door.jpg",
     "paw cleaning.jpg",
     "wants to leave.jpg",
     "sitting on couch.jpg",
@@ -361,18 +355,21 @@ function stackPictures() {
         
         
         for (const name of pictureNames) {
-            const i = minIndex(heights);
-
+            
             const picElement = document.createElement("img");
             picElement.src = "images/pics/" + name;
             picElement.classList.add("pic")
 
-            flexBoxes[i].appendChild(picElement);
+            picElement.onload = () => {
+                const i = minIndex(heights);
+                flexBoxes[i].appendChild(picElement);
+
+                // calculating client height of picture, since picElement.clientHeight is 0 for some reason
+                heights[i] += (main.clientWidth / pictureCols) * picElement.naturalHeight / picElement.naturalWidth; 
+                picElement.classList.add("tilt-on-hover");
+                picElement.addEventListener("click", () => showEnlargedView(picElement));
+            }
             
-            // calculating client height of picture, since picElement.clientHeight is 0 for some reason
-            heights[i] += (main.clientWidth / pictureCols) * picElement.naturalHeight / picElement.naturalWidth;; 
-            picElement.classList.add("tilt-on-hover");
-            picElement.addEventListener("click", () => showEnlargedView(picElement));
         }
     }
 }
@@ -449,7 +446,7 @@ const fadeWidth =
     parseInt(computed.getPropertyValue("--nav-fade-dist").slice(0, -2));
 
 const cont = document.getElementById("section-link-container");
-console.log(nav.clientHeight);
+
 cont.style.height = nav.clientHeight + 10 + "px";
 
 let scrolling = false;
