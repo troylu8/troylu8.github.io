@@ -434,9 +434,24 @@ option:hover {
     .section-link {
         font-size: 30px;
     }
+    .section-link-active, .section-link-inactive {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
     .section {
         padding-top: 60px;
     }
+    
+    .nav-arrow {
+        display: block;
+    }
+
+    #section-link-nav {
+        left: calc(var(--nav-fade-dist) + var(--nav-arrow-size));
+    }
+
     .devlog-entry, .devlog-doesnt-exist {
         margin-left: 0%;
     }
@@ -445,12 +460,5 @@ option:hover {
     }
     #click-to-enlarge {
         display: none;
-    }
-    .nav-arrow {
-        display: block;
-    }
-
-    #section-link-nav {
-        left: calc(var(--nav-fade-dist) + var(--nav-arrow-size));
     }
 }

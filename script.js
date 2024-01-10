@@ -428,6 +428,8 @@ function clamp(val, min, max) {
     return Math.min(Math.max(val, min), max);
 }
 
+
+
 const nav = document.getElementById("section-link-nav");
 
 const fadeWidth = 
@@ -436,27 +438,36 @@ const fadeWidth =
 
 const cont = document.getElementById("section-link-container");
 console.log(nav.clientHeight);
-cont.style.height = nav.clientHeight + "px";
+cont.style.height = nav.clientHeight + 10 + "px";
 
 let scrolling = false;
 let pos = fadeWidth;
 let lastX = null;
 
-nav.addEventListener("touchstart", () => { scrolling = true; }, {passive: true});
-document.body.addEventListener("touchend", () => { scrolling = false; lastX = null; });
+function startNavScroll() { scrolling = true;}
+function endNavScroll() {
+    scrolling = false; 
+    lastX = null;
+}
+function scrollNav(x) {
+    if (!scrolling || window.innerWidth > 500) return;
 
-
-document.body.addEventListener("touchmove", (e) => {
     if (lastX == null) { 
-        lastX = e.touches[0].clientX;
+        lastX = x;
         return;
     }
-    const nowX = e.touches[0].clientX;
+    const nowX = x;
 
-    if (scrolling && cont.clientWidth < nav.clientWidth) {
-        pos = clamp(pos + (nowX - lastX), cont.clientWidth - nav.clientWidth - fadeWidth, fadeWidth);
-        nav.style.left = pos + "px";
-    }
-
+    pos = clamp(pos + (nowX - lastX), cont.clientWidth - nav.clientWidth - fadeWidth, fadeWidth);
+    nav.style.left = pos + "px";
+    
     lastX = nowX;
-});
+} 
+
+nav.addEventListener("touchstart", () => { startNavScroll() }, {passive: true});
+document.body.addEventListener("touchend", () => { endNavScroll() });
+document.body.addEventListener("touchmove", (e) => { scrollNav(e.touches[0].clientX); });
+
+nav.addEventListener("mousedown", () => { startNavScroll() });
+document.body.addEventListener("mouseup", () => { endNavScroll() });
+document.body.addEventListener("mousemove", (e) => { scrollNav(e.clientX); });
