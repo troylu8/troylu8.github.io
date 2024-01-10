@@ -445,12 +445,18 @@ const fadeWidth =
     parseInt(computed.getPropertyValue("--nav-fade-dist").slice(0, -2));
 
 const cont = document.getElementById("section-link-container");
+cont.style.height = nav.clientHeight + "px";
+window.addEventListener("resize", () => {
+    cont.style.height = nav.clientHeight + "px";
+})
 
-cont.style.height = nav.clientHeight + 10 + "px";
 
 let scrolling = false;
 let pos = fadeWidth;
 let lastX = null;
+
+const leftArrow = document.getElementById("nav-left");
+const rightArrow = document.getElementById("nav-right");
 
 function startNavScroll() { scrolling = true;}
 function endNavScroll() {
@@ -466,7 +472,11 @@ function scrollNav(x) {
     }
     const nowX = x;
 
-    pos = clamp(pos + (nowX - lastX), cont.clientWidth - nav.clientWidth - fadeWidth, fadeWidth);
+    const bounds = [cont.clientWidth - nav.clientWidth - fadeWidth, fadeWidth]
+    pos = clamp(pos + (nowX - lastX), bounds[0], bounds[1]);
+    leftArrow.style.visibility = (pos === bounds[1])? "hidden" : "visible";
+    rightArrow.style.visibility = (pos === bounds[0])? "hidden" : "visible";
+    
     nav.style.left = pos + "px";
     
     lastX = nowX;

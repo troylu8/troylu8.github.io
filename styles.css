@@ -96,7 +96,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-
+    
     overflow: hidden;
 
     width: 100%;
@@ -156,6 +156,7 @@ body {
 
     box-shadow: 0px 0px var(--nav-fade-dist) var(--nav-fade-dist) var(--slate-color);
     z-index: 11;
+    
     
     display: none;
 }
@@ -393,13 +394,11 @@ option:hover {
 
 #pics-container {
     display: grid;
-    min-height: 10px;
 }
 .pic-column {
     display: flex;
     flex-direction: column;
     margin: 10px;
-    min-height: 10px;
 }
 
 .pic {
@@ -455,6 +454,9 @@ option:hover {
     
     .nav-arrow {
         display: block;
+    }
+    #nav-right {
+        visibility: visible;
     }
 
     #section-link-nav {
