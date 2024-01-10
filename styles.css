@@ -102,7 +102,7 @@ body {
     width: 100%;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
     background-color: #26282Ab0;
 
@@ -110,7 +110,9 @@ body {
 }
 
 #section-link-nav {
-    position: absolute;
+    position: block;
+
+    left: auto;
 
     display: flex;
     justify-content: center;
@@ -431,6 +433,9 @@ option:hover {
 }
 
 @media screen and (max-width: 500px) {
+    #section-link-container {
+        justify-content: space-between;
+    }
     .section-link {
         font-size: 30px;
     }
@@ -449,6 +454,7 @@ option:hover {
     }
 
     #section-link-nav {
+        position: absolute;
         left: calc(var(--nav-fade-dist) + var(--nav-arrow-size));
     }
 

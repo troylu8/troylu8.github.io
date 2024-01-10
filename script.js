@@ -14,9 +14,6 @@ function setActiveSection(id) {
     if (activeSection !== null) {
         activeSection.style.display = "none";
         setChildrenTransparent(activeSection);
-        for (const waiter of waiters)
-            clearTimeout(waiter);
-        waiters.clear();
     }
     activeSection = document.getElementById(id);
     activeSection.style.display = "flex";
@@ -139,6 +136,10 @@ function fadeInChildren(parentElem) {
 function setChildrenTransparent(parentElem) {
     for (const child of parentElem.children) 
         child.style.opacity = "0";
+
+    for (const waiter of waiters)
+        clearTimeout(waiter);
+    waiters.clear();
 }
 
 function fetchJSON(filepath, cb) {
@@ -471,3 +472,7 @@ document.body.addEventListener("touchmove", (e) => { scrollNav(e.touches[0].clie
 nav.addEventListener("mousedown", () => { startNavScroll() });
 document.body.addEventListener("mouseup", () => { endNavScroll() });
 document.body.addEventListener("mousemove", (e) => { scrollNav(e.clientX); });
+
+// window.addEventListener("resize", () => { 
+//     if (window.innerWidth > 500) 
+// });
