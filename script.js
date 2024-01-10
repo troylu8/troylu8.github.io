@@ -211,6 +211,7 @@ function addProjectPanel(proj) {
                             .appendChild(document.createElement("img"))
         imgElement.src = proj['image-path'];
         imgElement.classList.add("tilt-on-hover");
+        
         imgElement.addEventListener("click", () => showEnlargedView(imgElement));
 
     projectSection

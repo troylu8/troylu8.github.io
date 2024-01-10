@@ -8,7 +8,6 @@
 */
 
 html, body {
-    /* height: 100%; */
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -156,7 +155,6 @@ body {
 
     box-shadow: 0px 0px var(--nav-fade-dist) var(--nav-fade-dist) var(--slate-color);
     z-index: 11;
-    
     
     display: none;
 }
@@ -383,6 +381,11 @@ option:hover {
     color: lightblue;
 }
 
+.b {
+    display: block;
+    margin: 15px 0;
+}
+
 #image-holder {
     display: none;
 }
@@ -457,6 +460,9 @@ option:hover {
     }
     #nav-right {
         visibility: visible;
+    }
+    #nav-left {
+        visibility: hidden;
     }
 
     #section-link-nav {
