@@ -222,7 +222,6 @@ const devlogSection = document.getElementById("devlogs");
 
 function addDevlogListing(projName) {
     for (const panel of document.getElementsByClassName("dropdown-panel")) {
-            
         const option = panel.appendChild(document.createElement("option"));
         option.value = `${projName}-devlog`;
         option.textContent = projName;
