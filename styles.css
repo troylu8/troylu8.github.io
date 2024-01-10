@@ -350,6 +350,7 @@ option:hover {
     color: lightcoral;
     display: inline-block;
     position: relative;
+    
 }
 
 #red-text:hover > #red-text-tooltip {
@@ -358,6 +359,9 @@ option:hover {
 
 #hover-msg {
     display: inline;
+}
+#hover-msg::before {
+    content: "hover over";
 }
 
 .devlogs-desc {
@@ -466,5 +470,9 @@ option:hover {
     }
     #click-to-enlarge {
         display: none;
+    }
+
+    #hover-msg::before {
+        content: "tap";
     }
 }

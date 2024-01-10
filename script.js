@@ -310,7 +310,20 @@ const pictureNames = [
     "against rainy glass.jpg",
     "catto.jpg",
     "sitting on couch.jpg",
-    "under table.jpg"
+    "under table.jpg",
+    "close.jpg",
+    "her new bed.jpg",
+    "hnm.jpg",
+    "lying down.jpg",
+    "on her back.jpg",
+    "outside the door.jpg",
+    "paw cleaning.jpg",
+    "wants to leave.jpg",
+    "sitting on couch.jpg",
+    "sitting.jpg",
+    "staring.jpg",
+    "stomach.jpg",
+    "upright.jpg"
 ]
 
 const main = document.getElementById("main");
@@ -429,8 +442,6 @@ function clamp(val, min, max) {
     return Math.min(Math.max(val, min), max);
 }
 
-
-
 const nav = document.getElementById("section-link-nav");
 
 const fadeWidth = 
@@ -472,7 +483,3 @@ document.body.addEventListener("touchmove", (e) => { scrollNav(e.touches[0].clie
 nav.addEventListener("mousedown", () => { startNavScroll() });
 document.body.addEventListener("mouseup", () => { endNavScroll() });
 document.body.addEventListener("mousemove", (e) => { scrollNav(e.clientX); });
-
-// window.addEventListener("resize", () => { 
-//     if (window.innerWidth > 500) 
-// });
