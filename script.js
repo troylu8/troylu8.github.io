@@ -427,12 +427,20 @@ function clamp(val, min, max) {
     return Math.min(Math.max(val, min), max);
 }
 
-const linkNav = document.getElementById("section-link-nav");
+const nav = document.getElementById("section-link-nav");
+
+const fadeWidth = 25 + parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-fade-dist").slice(0, -2));
+console.log(nav.clientWidth );
+
+const cont = document.getElementById("section-link-container");
+console.log(nav.clientHeight);
+cont.style.height = nav.clientHeight + "px";
+
 let scrolling = false;
-let pos = 0;
+let pos = fadeWidth;
 let lastX = null;
 
-linkNav.addEventListener("touchstart", () => { scrolling = true; });
+nav.addEventListener("touchstart", () => { scrolling = true; });
 document.body.addEventListener("touchend", () => { scrolling = false; lastX = null; });
 
 
@@ -443,10 +451,12 @@ document.body.addEventListener("touchmove", (e) => {
     }
     const nowX = e.touches[0].clientX;
 
-    if (scrolling && main.clientWidth < linkNav.clientWidth) {
-        pos = clamp(pos + (nowX - lastX), main.clientWidth - linkNav.clientWidth, 0);
+    // console.log(viewWidth, nav.clientWidth, fadeWidth, viewWidth - nav.clientWidth - fadeWidth);
 
-        linkNav.style.left = pos + "px";
+    if (scrolling && cont.clientWidth < nav.clientWidth) {
+        pos = clamp(pos + (nowX - lastX), cont.clientWidth - nav.clientWidth - fadeWidth, fadeWidth);
+        nav.style.left = pos + "px";
+        console.log(pos);
     }
 
     lastX = nowX;

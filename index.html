@@ -14,26 +14,37 @@
 
     <body>
         
-        <div id="section-link-container">
-            <nav id="section-link-nav">
-                <div class="section-link" onclick='setActiveSection("home")'>
-                    <div id="home-link" class="section-link-inactive"> home </div>
-                    <div class="section-link-underline"></div>
-                </div>
-                <div class="section-link" onclick='setActiveSection("projects")'>
-                    <div id="projects-link" class="section-link-inactive"> projects </div>
-                    <div class="section-link-underline"></div>
-                </div>
-                <div class="section-link" onclick='setActiveSection("devlogs")'>
-                    <div id="devlogs-link" class="section-link-inactive"> devlogs? </div>
-                    <div class="section-link-underline"></div>
-                </div>
-                <div class="section-link" onclick='setActiveSection("pics")'>
-                    <div id="pics-link" class="section-link-inactive"> pics </div>
-                    <div class="section-link-underline"></div>
-                </div>
-            </nav>    
+        <div id="nav-bar">
+            
+            <div id="section-link-container">
+                <div id="nav-left" class="nav-arrow"></div>
+
+                <nav id="section-link-nav">
+                    <div class="section-link" onclick='setActiveSection("home")'>
+                        <div id="home-link" class="section-link-inactive"> home </div>
+                        <div class="section-link-underline"></div>
+                    </div>
+                    <div class="section-link" onclick='setActiveSection("projects")'>
+                        <div id="projects-link" class="section-link-inactive"> projects </div>
+                        <div class="section-link-underline"></div>
+                    </div>
+                    <div class="section-link" onclick='setActiveSection("devlogs")'>
+                        <div id="devlogs-link" class="section-link-inactive"> devlogs? </div>
+                        <div class="section-link-underline"></div>
+                    </div>
+                    <div class="section-link" onclick='setActiveSection("pics")'>
+                        <div id="pics-link" class="section-link-inactive"> pics </div>
+                        <div class="section-link-underline"></div>
+                    </div>
+                </nav>    
+
+                <div id="nav-right" class="nav-arrow"></div>
+            </div>
+
+            
         </div>
+
+
 
         <main id="main">
 
@@ -105,7 +116,7 @@
                 <h1> cat pictures </h1>
                 <p> the second best thing on the internet (behind cat videos) </p>
                 <p> These are photos of Nine, my cat. Her hobbies are sleeping, eating, and sleeping. </p>
-                <p> click to enlarge and and bask in her glory. </p>
+                <p id="click-to-enlarge"> click to enlarge and and bask in her glory. </p>
                 
                 <div id="pics-container">
     

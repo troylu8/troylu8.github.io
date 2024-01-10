@@ -8,7 +8,7 @@
 */
 
 html, body {
-    height: 100%;
+    /* height: 100%; */
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -16,6 +16,8 @@ html, body {
 :root {
     --oat-color: #dfc98a;
     --slate-color: #26282A;
+
+    --nav-fade-dist: 15px;
 }
 
 html {
@@ -87,18 +89,46 @@ body {
     flex-direction: column-reverse;
     height: 100%;
 }
+#nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    background-color: #26282Ab0;
+}
+.nav-arrow {
+    width: 25px;
+    background-color: lightblue;
+
+    box-shadow: 0px 0px var(--nav-fade-dist) var(--nav-fade-dist) red;
+    z-index: 11;
+    
+    display: none;
+}
+
+#section-link-container {
+    overflow: hidden;
+
+    width: 100%;
+    position: relative;
+    border: solid gold 2px;
+
+    display: flex;
+    justify-content: space-between;
+}
 
 #section-link-nav {
-    position: fixed;
-    top: 0px;
-    left: 0px;
+    position: absolute;
 
     display: flex;
     justify-content: center;
 
-    background-color: #26282Ab0;
-
     z-index: 10;
+
+    outline: solid lightgreen 1px;
 }
 
 .section-link {
@@ -409,14 +439,27 @@ option:hover {
     rotate: 5deg;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 500px) {
     .section-link {
         font-size: 30px;
     }
     .section {
         padding-top: 60px;
     }
-    .devlog-entry {
+    .devlog-entry, .devlog-doesnt-exist {
         margin-left: 0%;
+    }
+    .tilt-on-hover:hover {
+        rotate: 0deg;
+    }
+    #click-to-enlarge {
+        display: none;
+    }
+    .nav-arrow {
+        display: block;
+    }
+
+    #section-link-nav {
+        left: calc(var(--nav-fade-dist) + 25);
     }
 }
