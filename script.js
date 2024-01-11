@@ -225,8 +225,10 @@ function addProjectPanel(proj) {
 
 const devlogSection = document.getElementById("devlogs");
 
+const dropdowns = document.getElementsByClassName("dropdown-panel");
+
 function addDevlogListing(projName) {
-    for (const panel of document.getElementsByClassName("dropdown-panel")) {
+    for (const panel of dropdowns) {
         const option = panel.appendChild(document.createElement("option"));
         option.value = `${projName}-devlog`;
         option.textContent = projName;
@@ -275,16 +277,18 @@ fetchJSON("data/projects.json", (projects) => {
         addProjectPanel(proj);
         addDevlogListing(proj['name']);
     }
+
+    addDevlogListing("my website").then(() => {
+        addDropdownEvents();
+    
+        stackPictures();
+        stackSoon();
+    
+        setActiveSection("home");
+        setActiveDevlog("my website");
+    })
 });
-addDevlogListing("my website").then(() => {
-    addDropdownEvents();
 
-    stackPictures();
-    stackSoon();
-
-    setActiveSection("home");
-    setActiveDevlog("my website");
-})
 
 function minIndex(arr) {
     let res = 0;
