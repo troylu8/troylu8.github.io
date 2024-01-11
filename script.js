@@ -65,13 +65,10 @@ function addDropdownEvents() {
         })
 
         for (const op of optionPanel.getElementsByTagName("*")) {
-            op.addEventListener("click", () => {
+            op.addEventListener("click", (e) => {
                 optionPanel.style.display = "none";
-                setActiveDevlog(op.textContent);                
-            })
-            op.addEventListener("touchstart", () => {
-                optionPanel.style.display = "none";
-                setActiveDevlog(op.textContent);                
+                setActiveDevlog(op.textContent);
+                e.stopPropagation();
             })
         }
     
