@@ -37,6 +37,14 @@ body {
     margin: 0;
 }
 
+code {
+    font-family: Consolas, "courier new";
+    color: lightcoral;
+    background-color: #414141;
+    padding: 0px 3px;
+    border-radius: 3px;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }

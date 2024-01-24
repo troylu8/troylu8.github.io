@@ -1,0 +1,7 @@
+[
+    {
+        "title": "pushing a boulder up an endless mountain",
+        "body": "alright, next ill add notification sounds to the app! ..wait, what? <br><br>vanilla java can only play <code>.wav</code> files? weird but alright, ill use javafx to play sounds then. Just gotta drop this <code>.jar</code> into my project aaand.. its not working. <br><br>alright fine, I'll take the time to learn to properly configure my project classpath. Ah, so thats how it works! So I just have to set these options and...and of course it's still not working. <br><br>You know what? I heard build tools are great for managing projects and their dependencies. If I can't figure it out, maybe maven can save me.<br><br>Alright. Everything is finally in place. It took me a while to get familiar with maven, but now I finally have a properly organized maven project.<br><br>I should be good to finally run the program and--<br><br>What do you mean \"this package isn't recognized\"!? The <code>.jar</code> file is right there!! What did I mess up now...<br><br>..Oh. I had to <code>require</code> the necessary modules in the <code>module-info.java</code> file. Wait a second, whats a module? Better get familiar with those as well in case I start forming bad habits..<br><br><br>As of writing this I'm still struggling to play these stupid notification sounds.",
+        "date": "Jan 2024"
+    }
+]

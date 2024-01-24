@@ -17,7 +17,7 @@
     },
     {
         "title": "javascript is not a strongly typed language",
-        "body": "about a week ago I started learning the holy trinity, html css and js, just to make this website. And it's been .. draining. <br><br> Especially javascript. I mean, I did like some parts of it, like how much less verbose it feels.  (looking at you, <code> public static void main(String[] args) </code>)  But coming from java, it was really jarring. Like how most of the time it feels like I have no idea what the object I'm working with is. I'll be hovering over the variable, asking (begging) vscode \"please, what type is this.. <i>thing</i> im using!?\" and all I'll get back is cold silence... and a tooltip that reads \"any\". Thanks mr ide. Very helpful. ", 
+        "body": "about a week ago I started learning the holy trinity, html css and js, just to make this website. And it's been .. draining. <br><br> Especially javascript. I mean, I did like some parts of it, like how much less verbose it feels.  ( looking at you, <code>public static void main(String[] args)</code> )  But coming from java, it was really jarring. Like how most of the time it feels like I have no idea what the object I'm working with is. I'll be hovering over the variable, asking (begging) vscode \"please, what type is this.. <i>thing</i> im using!?\" and all I'll get back is cold silence... and a tooltip that reads \"any\". Thanks mr ide. Very helpful. ", 
         "date": "Jan 2024"
     }
 ]
