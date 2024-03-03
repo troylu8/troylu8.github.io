@@ -72,7 +72,7 @@ function addDropdownEvents() {
             op.addEventListener("touchstart", () => {
                 optionPanel.style.display = "none";
                 setActiveDevlog(op.textContent);                
-            })
+            }, {passive: true})
         }
     
     }

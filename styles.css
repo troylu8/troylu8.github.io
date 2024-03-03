@@ -82,6 +82,10 @@ code {
     color: rgba(211, 211, 211, 0.9);
 }
 
+#email {
+    cursor: pointer;
+}
+
 #email:hover {
     text-decoration: underline;
 }
@@ -344,6 +348,7 @@ option:hover {
 #red-text-tooltip {
     position: absolute;
     background-color: var(--slate-color);
+    font-style: normal;
 
     left: 0px;
     top: 100%;
@@ -369,6 +374,11 @@ option:hover {
 }
 #hover-msg::before {
     content: "hover over";
+}
+
+div:has( > #hover-msg ) {
+    color: lightgrey;
+    font-style: italic;
 }
 
 .devlogs-desc {
