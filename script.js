@@ -1,7 +1,6 @@
 const computed = getComputedStyle(document.documentElement);
 
 const oatColor = computed.getPropertyValue("--oat-color");
-const slateColor = computed.getPropertyValue("--slate-color");
 
 let activeSectionID = null;
 let activeSection = null;

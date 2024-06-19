@@ -1,5 +1,13 @@
 [
     {
+        "name": "twenty (again)",
+        "desc": "a timer to help keep track of the 20 20 20 rule for resting your eyes.<br><br>the same as the other \"twenty\" below but written with electron js instead. (the java swing experience was terrible 😭)",
+        "date": "July 2024",
+        "image-path": "images/projects/twenty-js.png",
+        "link-icons": ["images/icons/github.jpg"],
+        "links": ["https://github.com/troylu8/twenty-js"]
+    },
+    {
         "name": "moonlight",
         "desc": "a simple music player for those late nights.",
         "date": "Jun 2024",
@@ -27,11 +35,11 @@
         ]
     },
     {
-        "name": "Twenty",
+        "name": "twenty",
         "desc": "a timer to help keep track of the 20 20 20 rule for resting your eyes.<br><br>as you can tell by the terrible ui, its not finished. I'm actually procrastinating working on it by making this website.",
-        "date": "work-in-progress",
+        "date": "cancelled",
         "image-path": "images/projects/twenty.png",
         "link-icons": ["images/icons/github.jpg"],
-        "links": ["https://github.com/troylu8/Twenty"]
+        "links": ["https://github.com/troylu8/twenty"]
     }
 ]
