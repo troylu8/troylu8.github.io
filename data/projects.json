@@ -18,7 +18,7 @@
     {
         "name": "archangels",
         "desc": "an action roguelike about swinging a scythe around in the afterlife. <br> written using java.",
-        "date": "work-in-progress",
+        "date": "indefinite hiatus",
         "image-path": "images/projects/archangels scythe sprites.png",
         "link-icons": ["images/icons/github.jpg"],
         "links": ["https://github.com/troylu8/archangels"]
