@@ -1,8 +1,19 @@
 [
     {
+        "name": "nearby-points",
+        "desc": "an npm package for finding data points within a region.",
+        "date": "Sep 2024",
+        "image-path": "images/projects/nearby-points.png",
+        "link-icons": ["images/icons/npm.png", "images/icons/github.jpg"],
+        "links": [
+            "https://www.npmjs.com/package/nearby-points",
+            "https://github.com/troylu8/nearby-points"
+        ]
+    },
+    {
         "name": "twenty (again)",
         "desc": "a timer to help keep track of the 20 20 20 rule for resting your eyes.<br><br>the same as the other \"twenty\" below but written with electron js instead. (the java swing experience was terrible 😭)",
-        "date": "July 2024",
+        "date": "Jul 2024",
         "image-path": "images/projects/twenty-js.png",
         "link-icons": ["images/icons/github.jpg"],
         "links": ["https://github.com/troylu8/twenty-js"]
@@ -26,7 +37,7 @@
     {
         "name": "MyNote",
         "desc": "an encrypted notetaking app made for the Congressional App Challenge 2023.",
-        "date": "july 2023",
+        "date": "Jul 2023",
         "image-path": "images/projects/note-icon.png",
         "link-icons": ["images/icons/github.jpg", "images/icons/youtube.png"],
         "links": [
