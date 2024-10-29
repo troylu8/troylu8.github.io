@@ -1,5 +1,13 @@
 [
     {
+        "name": "nav",
+        "desc": "A command line tool to navigate through directories - with arrow keys! <br> written in rust",
+        "date": "Oct 2024",
+        "image-path": "images/projects/nav.gif",
+        "link-icons": ["images/icons/github.jpg"],
+        "links": ["https://github.com/troylu8/nav"]
+    },
+    {
         "name": "nearby-points",
         "desc": "an npm package for finding data points within a region.",
         "date": "Sep 2024",
